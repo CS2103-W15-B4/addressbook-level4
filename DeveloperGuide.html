@@ -1742,6 +1742,18 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with at least one task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view one task details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the details and get the information of a task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with too many tasks that create conflicts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get error and warnings on event conflicts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to manage task more efficiently without conflicts</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1804,6 +1816,111 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-view-task-details" class="discrete">Use case: View task details</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list tasks</p>
+</li>
+<li>
+<p>AddressBook shows a list of persons</p>
+</li>
+<li>
+<p>User requests to see a specific task details</p>
+</li>
+<li>
+<p>AddressBook shows the details of a person</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-invalid-actions" class="discrete">Use case: Invalid actions</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests an invalid action</p>
+</li>
+<li>
+<p>AddressBook shows a error message</p>
+</li>
+<li>
+<p>AddressBook shows suggestions on fixings of this error or warning occurred</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The error message is hard to understand</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. The user can choose to exit/restart the program</p>
+</li>
+<li>
+<p>2a2. The user can choose to redo this action</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given suggestion is not a good fix</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook opt to redo this action</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>{More to be added}</p>
 </div>
@@ -1822,6 +1939,21 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+<li>
+<p>Should be able to respond and update within 2s per actions</p>
+</li>
+<li>
+<p>Should give reasonable error messages and warnings</p>
+</li>
+<li>
+<p>Should try to give suggestions with valid reasons and logic</p>
+</li>
+<li>
+<p>Should have not very steep learning curve for a regular English-speaking person</p>
+</li>
+<li>
+<p>Should have detailed tutorials and documentation</p>
 </li>
 </ol>
 </div>
@@ -1849,16 +1981,26 @@ for <code>RemarkCommandParser</code>.</p>
 <pre>A contact detail that is not meant to be shared with others</pre>
 </div>
 </div>
+<div id="Invalid-action" class="paragraph">
+<div class="title">/gradlew clean</div>
+<p>Invalid-action</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>An action that will trigger warnings and error messages
+Eg.: Dangerous events, delete and clashing events</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Product Name</strong></p>
+<p><strong>Trello</strong></p>
 </div>
 <div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
+<p>Author: Dong Shaocong</p>
 </div>
 <div class="paragraph">
 <p>Pros:</p>
@@ -1866,10 +2008,19 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>&#8230;&#8203;</p>
+<p>Beautiful interfaces</p>
 </li>
 <li>
-<p>&#8230;&#8203;</p>
+<p>Notes easy to remove, add, edit and move</p>
+</li>
+<li>
+<p>Have attachments and update history for an event</p>
+</li>
+<li>
+<p>Able to sync with different device for same account</p>
+</li>
+<li>
+<p>Have a lot of power ups to choose including github</p>
 </li>
 </ul>
 </div>
@@ -1879,10 +2030,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>&#8230;&#8203;</p>
+<p>Not command line software, so not very friendly for developers and command line lovers</p>
 </li>
 <li>
-<p>&#8230;&#8203;</p>
+<p>Unable to work offline and often clash with not so stable Internet connections</p>
 </li>
 </ul>
 </div>
@@ -1891,7 +2042,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-21 15:57:58 +00:00
+Last updated 2017-09-30 04:06:37 +00:00
 </div>
 </div>
 </body>
