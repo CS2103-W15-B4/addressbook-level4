@@ -97,6 +97,7 @@ public class ModelManager extends ComponentManager implements Model {
             addressBook.updatePerson(oldPerson, newPerson);
         }
     }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
