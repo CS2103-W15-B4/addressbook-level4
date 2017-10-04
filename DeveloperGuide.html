@@ -1737,6 +1737,24 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list tasks by date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see tasks by date order</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list tasks by priority</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see tasks by priority order</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list tasks by tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see tasks by tag</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
@@ -1827,6 +1845,81 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>[discrete]
+ +=== Use case: list tasks by date
+ +
+ +*MSS*
+ +
+ +1.  User requests to list tasks by date
+ +2.  AddressBook shows a list of tasks by date
+ +3.  User requests to see the tasks by date order
+ +4.  AddressBook shows the tasks by date
+ 
+ +Use case ends.
+ +
+ +*Extensions*
+ +
+ +[none]
+ +* 2a. The task list is invalid.
+ 
+ +[none]
+ +** 2a1. AddressBook shows an error message.
+ +** 2a2. AddressBook is empty.
+ 
+ +Use case resumes at step 2.
+ +
+ +[discrete]
+ +=== Use case: list tasks by priority order
+ +
+ +*MSS*
+ +
+ +1.  User requests to list tasks by priority
+ +2.  AddressBook shows a list of tasks by priority
+ +3.  User requests to see the tasks by priority order
+ +4.  AddressBook shows the tasks by priority
+ 
+ +Use case ends.
+ +
+ +*Extensions*
+ +
+ +[none]
+ +* 2a. The task list is invalid.
+ 
+ +[none]
+ +** 2a1. AddressBook shows an error message.
+ +** 2a2. AddressBook is empty.
+ 
+ +Use case resumes at step 2.
+ +
+ +Use case ends.
+ +
++[discrete]
+ +=== Use case: list tasks by tag
+ +
+ +*MSS*
+ +
+ +1.  User requests to list tasks by tag
+ +2.  AddressBook shows a list of tasks by tag
+ +3.  User requests to see the tasks by tag
+ +4.  AddressBook shows the tasks by tag
+ 
+ +Use case ends.
+ +
+ +*Extensions*
+ +
+ +[none]
+ +* 2a. The task list is invalid.
+ 
+ +[none]
+ +** 2a1. AddressBook shows an error message.
+ +** 2a2. AddressBook is empty.
+ +
+ +Use case resumes at step 2.
+<br>
+ +Use case ends.
+<br></p>
 </div>
 <h3 id="use-case-add-a-new-task" class="discrete">Use case: Add a new task</h3>
 <div class="paragraph">
@@ -2238,7 +2331,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-04 07:29:35 +00:00
+Last updated 2017-10-04 10:08:37 +00:00
 </div>
 </div>
 </body>
