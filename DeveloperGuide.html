@@ -46,7 +46,8 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-mechanism">3.1. Undo/Redo mechanism</a></li>
 <li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#configuration">3.3. Configuration</a></li>
+<li><a href="#taskbook">3.3. TaskBook</a></li>
+<li><a href="#configuration">3.4. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -518,10 +519,10 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the Address Book data and the Task Book data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;ReadOnlyPerson&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;ReadOnlyPerson&gt;</code> and another unmodifiable <code>ObservableList&lt;ReadOnlyTask&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -805,7 +806,105 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">3.3. Configuration</a></h3>
+<h3 id="taskbook"><a class="link" href="#taskbook">3.3. TaskBook</a></h3>
+<div class="paragraph">
+<p>We develop this application as a parallel of two similar application, namely addressBook and taskBook. They are similar in many ways, including comman commands like <code>add</code> for adding a person and <code>addTask</code> for adding a task.<br></p>
+</div>
+<div class="paragraph">
+<p>Adding a taskBook to our application originated from our design requirements. In product v1.0, we have updated developer guide and user guide for a set of new functionalities specially designed for tasks. Thus, we need to add a taskBook to this application.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The taskBook is a set of parallel functionalities apart from the addressBook.</p>
+</li>
+<li>
+<p>The taskBook is related to addressbook in the sense that we can link the person and task together.</p>
+</li>
+<li>
+<p>taskBook and addressBook has the following independent components: <code>model</code>, <code>logic</code>, and <code>storage</code>.</p>
+</li>
+<li>
+<p>taskBook and addressBook share the same user interface by taking up taskPanel and personPanel respectively.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With the extra taskBook working in parallel, the model interface should be modified in this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">ReadOnlyTaskBook getTaskBook();
+
+<span class="type">void</span> addTask(ReadOnlyTask task) <span class="directive">throws</span> DuplicateTaskException;
+
+<span class="type">void</span> updateFilteredTaskList(<span class="predefined-type">Predicate</span>&lt;ReadOnlyTask&gt; predicate);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the updated model interface, the ModelManager and ModelStub should be modified accordingly.<br></p>
+</div>
+<div class="paragraph">
+<p>For storage, we save the tasks into another storage file (xml file), the storage interface should be equipped with the following read and write methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Optional&lt;ReadOnlyTaskBook&gt; readTaskBook() <span class="directive">throws</span> DataConversionException, <span class="exception">IOException</span>;
+
+<span class="annotation">@Override</span>
+<span class="type">void</span> saveTaskBook(ReadOnlyTaskBook addressBook) <span class="directive">throws</span> <span class="exception">IOException</span>;
+
+<span class="annotation">@Override</span>
+Optional&lt;ReadOnlyAddressBook&gt; readAddressBook() <span class="directive">throws</span> DataConversionException, <span class="exception">IOException</span>;
+
+<span class="annotation">@Override</span>
+<span class="type">void</span> saveAddressBook(ReadOnlyAddressBook addressBook) <span class="directive">throws</span> <span class="exception">IOException</span>;
+
+<span class="type">void</span> handleAddressBookChangedEvent(AddressBookChangedEvent abce);
+
+<span class="type">void</span> handleTaskBookChangedEvent(TaskBookChangedEvent tbce);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As given in storage and model, the main logic should be implemented this way to take both addressbook and the taskbook&#8217;s storage during initialization.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">UserPrefsStorage userPrefsStorage = <span class="keyword">new</span> JsonUserPrefsStorage(config.getUserPrefsFilePath());
+userPrefs = initPrefs(userPrefsStorage);
+AddressBookStorage addressBookStorage = <span class="keyword">new</span> XmlAddressBookStorage(userPrefs.getAddressBookFilePath());
+TaskBookStorage taskBookStorage = <span class="keyword">new</span> XmlTaskBookStorage(userPrefs.getTaskBookFilePath());
+storage = <span class="keyword">new</span> StorageManager(addressBookStorage, userPrefsStorage, taskBookStorage);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The unit tests stub classes and setUp methods should be updated accordingly.<br></p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>taskBookStorage</code><br>
+<strong>Alternative 1 (current choice):</strong> Create a new xml file and several xml adapted classes for task Book storage<br>
+<strong>Pros:</strong> We will not create any dependencies between taskBook and addressBook.<br>
+<strong>Cons:</strong> A lot of code seems very similar and more storage file become hrad to manage.<br>
+<strong>Alternative 2:</strong> Save the new task to the same storage xml file as addressBook<br>
+<strong>Pros:</strong> This method of implementation saves the space and it can reuse some of the codes in addressBook.<br>
+<strong>Cons:</strong> It creates dependency between the storage for both books and it is inefficient to retrieve only one of them from storage xml file.+</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect</strong> Implementation of modelling and logic of <code>taskBook</code><br>
+<strong>Alternative 1 (current choice):</strong> Rewrite codes for taskBook, keep the original addressbook codes untouched.<br>
+<strong>Pros:</strong> The original addressBook logic and modelling will not be affected. We keep an independent book from the original.<br>
+<strong>Cons:</strong> The code reusage is very low and adding a taskBook become very tedious.<br>
+<strong>Alternative 2:</strong> Modify the original code base to reutiliza some of the common functionalities.<br>
+<strong>Pros:</strong> The code reusage is good and adding a taskBook becomes more efficient.<br>
+<strong>Cons:</strong> The dependency is very high between addressBook and taskBook, there is a high tendency to break original logic and modelling.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration"><a class="link" href="#configuration">3.4. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2538,7 +2637,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-17 01:57:17 +00:00
+Last updated 2017-10-18 12:51:44 +00:00
 </div>
 </div>
 </body>
