@@ -29,7 +29,7 @@
 <li><a href="#prerequisites">1.1. Prerequisites</a></li>
 <li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
 <li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
+<li><a href="#configuring-the-application">1.4. Configuring the application</a></li>
 </ul>
 </li>
 <li><a href="#design">2. Design</a>
@@ -103,7 +103,7 @@
 </td>
 <td class="content">
 Having any Java 8 version is not enough.<br>
-This app will not work with earlier versions of Java 8.
+This app is not compatible with earlier versions of Java 8.
 </td>
 </tr>
 </table>
@@ -119,7 +119,8 @@ This app will not work with earlier versions of Java 8.
 </td>
 <td class="content">
 IntelliJ by default has Gradle and JavaFx plugins installed.<br>
-Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+Please install them if they are disabled.<br>
+Checking plug-ins by going to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code>.
 </td>
 </tr>
 </table>
@@ -164,8 +165,21 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <p>Click <code>OK</code> to accept the default settings</p>
 </li>
 <li>
-<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+<p>Open a console and run the <code>gradle</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Windows users please use <code>gradlew processResources</code></p>
+</li>
+<li>
+<p>Mac/Linux users please use  <code>./gradlew processResources</code>).</p>
+</li>
+<li>
+<p>It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
 This will generate all resources required by the application and tests.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -176,6 +190,16 @@ This will generate all resources required by the application and tests.</p>
 <ol class="arabic">
 <li>
 <p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type the command in the command line in the root folder of this application.</p>
+</li>
+<li>
+<p>Alternatively, you can right click the MainApp in <code>src</code> folder and click <code>run MainApp</code>.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
 <p><a href="#testing">Run the tests</a> to ensure they all pass.</p>
@@ -184,7 +208,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></h3>
+<h3 id="configuring-the-application"><a class="link" href="#configuring-the-application">1.4. Configuring the application</a></h3>
 <div class="sect3">
 <h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
@@ -268,6 +292,9 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="architecture"><a class="link" href="#architecture">2.1. Architecture</a></h3>
+<div class="paragraph">
+<p>This <strong><em>Architecture Diagram</em></strong> given below explains the high-level design of the App.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
@@ -275,9 +302,6 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </div>
 <div class="paragraph">
 <p><em>Figure 2.1.1 : Architecture Diagram</em></p>
-</div>
-<div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -337,7 +361,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components</p>
+<p>Commonalities of the four components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -408,7 +432,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </table>
 </div>
 <div class="paragraph">
-<p>The sections below give more details of each component.</p>
+<p>These are the details of each component.</p>
 </div>
 </div>
 <div class="sect2">
@@ -579,13 +603,16 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="paragraph">
 <p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
 </div>
+<div class="paragraph">
+<p><code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>The details are given in this diagram.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-</div>
-<div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are implemented this way:</p>
@@ -622,19 +649,42 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
+</li>
+<li>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The current state of the address book is saved before the <code>delete 5</code> command executes.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+</li>
+<li>
+<p>The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
 </div>
-<div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -653,11 +703,18 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed.</p>
+</li>
+<li>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>.</p>
+</li>
+<li>
+<p>We will restore the address book to the state before the <code>add</code> command executed.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -700,15 +757,34 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+<p>The user now decides to execute a new command, <code>clear</code>.<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As before, <code>clear</code> will be pushed into the <code>undoStack</code>.</p>
+</li>
+<li>
+<p>This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command.</p>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
 </div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2637,7 +2713,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-18 17:59:53 +00:00
+Last updated 2017-10-20 04:38:03 +00:00
 </div>
 </div>
 </body>

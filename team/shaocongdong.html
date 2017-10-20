@@ -136,13 +136,16 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="paragraph">
 <p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
 </div>
+<div class="paragraph">
+<p><code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>The details are given in this diagram.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-</div>
-<div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are implemented this way:</p>
@@ -179,19 +182,42 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
+</li>
+<li>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The current state of the address book is saved before the <code>delete 5</code> command executes.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+</li>
+<li>
+<p>The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
 </div>
-<div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -210,11 +236,18 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed.</p>
+</li>
+<li>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>.</p>
+</li>
+<li>
+<p>We will restore the address book to the state before the <code>add</code> command executed.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -257,15 +290,34 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+<p>The user now decides to execute a new command, <code>clear</code>.<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As before, <code>clear</code> will be pushed into the <code>undoStack</code>.</p>
+</li>
+<li>
+<p>This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command.</p>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
 </div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -352,7 +404,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-18 17:59:53 +00:00
+Last updated 2017-10-20 04:38:03 +00:00
 </div>
 </div>
 </body>
