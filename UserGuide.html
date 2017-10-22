@@ -37,12 +37,13 @@
 <li><a href="#deleting-a-person-code-delete-code">2.8. Deleting a person : <code>delete</code></a></li>
 <li><a href="#deleting-a-task-code-deletetask-code">2.9. Deleting a task : <code>deleteTask</code></a></li>
 <li><a href="#selecting-a-person-code-select-code">2.10. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">2.11. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">2.12. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.13. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">2.14. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">2.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">2.16. Saving the data</a></li>
+<li><a href="#selecting-a-task-code-selecttask-code">2.11. Selecting a task : <code>selectTask</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">2.12. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">2.13. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.14. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">2.15. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">2.16. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">2.17. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#coming-in-v2-0">3. Coming in v2.0</a>
@@ -51,22 +52,21 @@
 <li><a href="#finding-a-person-by-name">3.2. Finding a person by name</a></li>
 <li><a href="#auto-focusing-on-input-bar-at-the-start-of-the-application">3.3. Auto-focusing on input bar at the start of the application</a></li>
 <li><a href="#setting-a-task-to-be-recurring">3.4. Setting a task to be recurring</a></li>
-<li><a href="#editing-a-task">3.5. Editing a task</a></li>
-<li><a href="#seeing-tasks-in-certain-range-of-time">3.6. Seeing tasks in certain range of time</a></li>
-<li><a href="#listing-tasks-by-date">3.7. Listing tasks by date</a></li>
-<li><a href="#listing-tasks-by-priority">3.8. Listing tasks by priority</a></li>
-<li><a href="#listing-tasks-by-tag">3.9. Listing tasks by tag</a></li>
-<li><a href="#viewing-one-task-details-with-the-relevant-person-in-the-addressbook">3.10. Viewing one task details with the relevant person in the addressbook</a></li>
-<li><a href="#viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook">3.11. Viewing one person details with the relevant tasks displayed in the addressbook</a></li>
-<li><a href="#having-a-map-view-of-the-current-selected-person-or-himself">3.12. Having a map view of the current selected person or himself</a></li>
-<li><a href="#linking-a-task-to-a-person">3.13. Linking a task to a person</a></li>
-<li><a href="#adding-a-general-notes-or-comments-to-each-contact-person">3.14. Adding a general notes or comments to each contact person</a></li>
-<li><a href="#listing-last-few-contacts-the-user-have-found">3.15. Listing last few contacts the user have found</a></li>
-<li><a href="#exporting-contact-info-as-an-add-command-user-can-choose-whether-to-disclose-the-private-information-about-this-contact-details">3.16. Exporting contact info as an add command (user can choose whether to disclose the private information about this contact details)</a></li>
-<li><a href="#exporting-task-details-as-an-add-command">3.17. Exporting task details as an add command</a></li>
-<li><a href="#pinning-important-contacts-or-task-on-top">3.18. Pinning important contacts or task on top</a></li>
-<li><a href="#remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task">3.19. Remindering region in task bar|see the reminder and be reminded of the deadline or the up comings of this task</a></li>
-<li><a href="#possible-new-features">3.20. Possible new features</a></li>
+<li><a href="#seeing-tasks-in-certain-range-of-time">3.5. Seeing tasks in certain range of time</a></li>
+<li><a href="#listing-tasks-by-date">3.6. Listing tasks by date</a></li>
+<li><a href="#listing-tasks-by-priority">3.7. Listing tasks by priority</a></li>
+<li><a href="#listing-tasks-by-tag">3.8. Listing tasks by tag</a></li>
+<li><a href="#viewing-one-task-details-with-the-relevant-person-in-the-addressbook">3.9. Viewing one task details with the relevant person in the addressbook</a></li>
+<li><a href="#viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook">3.10. Viewing one person details with the relevant tasks displayed in the addressbook</a></li>
+<li><a href="#having-a-map-view-of-the-current-selected-person-or-himself">3.11. Having a map view of the current selected person or himself</a></li>
+<li><a href="#linking-a-task-to-a-person">3.12. Linking a task to a person</a></li>
+<li><a href="#adding-a-general-notes-or-comments-to-each-contact-person">3.13. Adding a general notes or comments to each contact person</a></li>
+<li><a href="#listing-last-few-contacts-the-user-have-found">3.14. Listing last few contacts the user have found</a></li>
+<li><a href="#exporting-contact-info-as-an-add-command-user-can-choose-whether-to-disclose-the-private-information-about-this-contact-details">3.15. Exporting contact info as an add command (user can choose whether to disclose the private information about this contact details)</a></li>
+<li><a href="#exporting-task-details-as-an-add-command">3.16. Exporting task details as an add command</a></li>
+<li><a href="#pinning-important-contacts-or-task-on-top">3.17. Pinning important contacts or task on top</a></li>
+<li><a href="#remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task">3.18. Remindering region in task bar|see the reminder and be reminded of the deadline or the up comings of this task</a></li>
+<li><a href="#possible-new-features">3.19. Possible new features</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -461,7 +461,7 @@ Format: <code>select INDEX</code></p>
 <p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the most recent listing.</p>
+<p>The index refers to the index number shown in the most recent listing of persons.</p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
@@ -489,7 +489,42 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.11. Listing entered commands : <code>history</code></a></h3>
+<h3 id="selecting-a-task-code-selecttask-code"><a class="link" href="#selecting-a-task-code-selecttask-code">2.11. Selecting a task : <code>selectTask</code></a></h3>
+<div class="paragraph">
+<p>Selects the task identified by the index number used in the last task listing.<br>
+Format: <code>selectTask INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the task and display the task at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing of tasks.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select 2</code><br>
+Selects the 2nd task in the task book.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.12. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -510,7 +545,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.12. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.13. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -555,7 +590,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.13. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.14. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -587,21 +622,21 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.14. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.15. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.15. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.16. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.16. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.17. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -629,109 +664,105 @@ There is no need to save manually.</p>
 
 </div>
 <div class="sect2">
-<h3 id="editing-a-task"><a class="link" href="#editing-a-task">3.5. Editing a task</a></h3>
+<h3 id="seeing-tasks-in-certain-range-of-time"><a class="link" href="#seeing-tasks-in-certain-range-of-time">3.5. Seeing tasks in certain range of time</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="seeing-tasks-in-certain-range-of-time"><a class="link" href="#seeing-tasks-in-certain-range-of-time">3.6. Seeing tasks in certain range of time</a></h3>
+<h3 id="listing-tasks-by-date"><a class="link" href="#listing-tasks-by-date">3.6. Listing tasks by date</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="listing-tasks-by-date"><a class="link" href="#listing-tasks-by-date">3.7. Listing tasks by date</a></h3>
+<h3 id="listing-tasks-by-priority"><a class="link" href="#listing-tasks-by-priority">3.7. Listing tasks by priority</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="listing-tasks-by-priority"><a class="link" href="#listing-tasks-by-priority">3.8. Listing tasks by priority</a></h3>
+<h3 id="listing-tasks-by-tag"><a class="link" href="#listing-tasks-by-tag">3.8. Listing tasks by tag</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="listing-tasks-by-tag"><a class="link" href="#listing-tasks-by-tag">3.9. Listing tasks by tag</a></h3>
+<h3 id="viewing-one-task-details-with-the-relevant-person-in-the-addressbook"><a class="link" href="#viewing-one-task-details-with-the-relevant-person-in-the-addressbook">3.9. Viewing one task details with the relevant person in the addressbook</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="viewing-one-task-details-with-the-relevant-person-in-the-addressbook"><a class="link" href="#viewing-one-task-details-with-the-relevant-person-in-the-addressbook">3.10. Viewing one task details with the relevant person in the addressbook</a></h3>
+<h3 id="viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook"><a class="link" href="#viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook">3.10. Viewing one person details with the relevant tasks displayed in the addressbook</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook"><a class="link" href="#viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook">3.11. Viewing one person details with the relevant tasks displayed in the addressbook</a></h3>
+<h3 id="having-a-map-view-of-the-current-selected-person-or-himself"><a class="link" href="#having-a-map-view-of-the-current-selected-person-or-himself">3.11. Having a map view of the current selected person or himself</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="having-a-map-view-of-the-current-selected-person-or-himself"><a class="link" href="#having-a-map-view-of-the-current-selected-person-or-himself">3.12. Having a map view of the current selected person or himself</a></h3>
+<h3 id="linking-a-task-to-a-person"><a class="link" href="#linking-a-task-to-a-person">3.12. Linking a task to a person</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="linking-a-task-to-a-person"><a class="link" href="#linking-a-task-to-a-person">3.13. Linking a task to a person</a></h3>
+<h3 id="adding-a-general-notes-or-comments-to-each-contact-person"><a class="link" href="#adding-a-general-notes-or-comments-to-each-contact-person">3.13. Adding a general notes or comments to each contact person</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="adding-a-general-notes-or-comments-to-each-contact-person"><a class="link" href="#adding-a-general-notes-or-comments-to-each-contact-person">3.14. Adding a general notes or comments to each contact person</a></h3>
+<h3 id="listing-last-few-contacts-the-user-have-found"><a class="link" href="#listing-last-few-contacts-the-user-have-found">3.14. Listing last few contacts the user have found</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="listing-last-few-contacts-the-user-have-found"><a class="link" href="#listing-last-few-contacts-the-user-have-found">3.15. Listing last few contacts the user have found</a></h3>
+<h3 id="exporting-contact-info-as-an-add-command-user-can-choose-whether-to-disclose-the-private-information-about-this-contact-details"><a class="link" href="#exporting-contact-info-as-an-add-command-user-can-choose-whether-to-disclose-the-private-information-about-this-contact-details">3.15. Exporting contact info as an add command (user can choose whether to disclose the private information about this contact details)</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="exporting-contact-info-as-an-add-command-user-can-choose-whether-to-disclose-the-private-information-about-this-contact-details"><a class="link" href="#exporting-contact-info-as-an-add-command-user-can-choose-whether-to-disclose-the-private-information-about-this-contact-details">3.16. Exporting contact info as an add command (user can choose whether to disclose the private information about this contact details)</a></h3>
+<h3 id="exporting-task-details-as-an-add-command"><a class="link" href="#exporting-task-details-as-an-add-command">3.16. Exporting task details as an add command</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="exporting-task-details-as-an-add-command"><a class="link" href="#exporting-task-details-as-an-add-command">3.17. Exporting task details as an add command</a></h3>
+<h3 id="pinning-important-contacts-or-task-on-top"><a class="link" href="#pinning-important-contacts-or-task-on-top">3.17. Pinning important contacts or task on top</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="pinning-important-contacts-or-task-on-top"><a class="link" href="#pinning-important-contacts-or-task-on-top">3.18. Pinning important contacts or task on top</a></h3>
+<h3 id="remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task"><a class="link" href="#remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task">3.18. Remindering region in task bar|see the reminder and be reminded of the deadline or the up comings of this task</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task"><a class="link" href="#remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task">3.19. Remindering region in task bar|see the reminder and be reminded of the deadline or the up comings of this task</a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="possible-new-features"><a class="link" href="#possible-new-features">3.20. Possible new features</a></h3>
+<h3 id="possible-new-features"><a class="link" href="#possible-new-features">3.19. Possible new features</a></h3>
 <div class="sect3">
-<h4 id="adding-image-to-a-contact-person"><a class="link" href="#adding-image-to-a-contact-person">3.20.1. Adding image to a contact person</a></h4>
+<h4 id="adding-image-to-a-contact-person"><a class="link" href="#adding-image-to-a-contact-person">3.19.1. Adding image to a contact person</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="sorting-persons-by-name"><a class="link" href="#sorting-persons-by-name">3.20.2. Sorting persons by name</a></h4>
+<h4 id="sorting-persons-by-name"><a class="link" href="#sorting-persons-by-name">3.19.2. Sorting persons by name</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="adding-new-tasks-with-hierarchy"><a class="link" href="#adding-new-tasks-with-hierarchy">3.20.3. Adding new tasks with hierarchy</a></h4>
+<h4 id="adding-new-tasks-with-hierarchy"><a class="link" href="#adding-new-tasks-with-hierarchy">3.19.3. Adding new tasks with hierarchy</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="editing-hierarchy"><a class="link" href="#editing-hierarchy">3.20.4. Editing hierarchy</a></h4>
+<h4 id="editing-hierarchy"><a class="link" href="#editing-hierarchy">3.19.4. Editing hierarchy</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="getting-error-and-warnings-on-event-conflicts"><a class="link" href="#getting-error-and-warnings-on-event-conflicts">3.20.5. Getting error and warnings on event conflicts</a></h4>
+<h4 id="getting-error-and-warnings-on-event-conflicts"><a class="link" href="#getting-error-and-warnings-on-event-conflicts">3.19.5. Getting error and warnings on event conflicts</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="having-multiple-hot-keys-available"><a class="link" href="#having-multiple-hot-keys-available">3.20.6. Having multiple hot keys available</a></h4>
+<h4 id="having-multiple-hot-keys-available"><a class="link" href="#having-multiple-hot-keys-available">3.19.6. Having multiple hot keys available</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="auto-completion-of-commands"><a class="link" href="#auto-completion-of-commands">3.20.7. Auto-completion of commands</a></h4>
+<h4 id="auto-completion-of-commands"><a class="link" href="#auto-completion-of-commands">3.19.7. Auto-completion of commands</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="suggesting-next-part-of-the-commands"><a class="link" href="#suggesting-next-part-of-the-commands">3.20.8. Suggesting next part of the commands</a></h4>
+<h4 id="suggesting-next-part-of-the-commands"><a class="link" href="#suggesting-next-part-of-the-commands">3.19.8. Suggesting next part of the commands</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="trigger-password"><a class="link" href="#trigger-password">3.20.9. Trigger &amp; password</a></h4>
+<h4 id="trigger-password"><a class="link" href="#trigger-password">3.19.9. Trigger &amp; password</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="customising-background-wallpaper"><a class="link" href="#customising-background-wallpaper">3.20.10. Customising background wallpaper</a></h4>
+<h4 id="customising-background-wallpaper"><a class="link" href="#customising-background-wallpaper">3.19.10. Customising background wallpaper</a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="having-a-settings-manager-config-file"><a class="link" href="#having-a-settings-manager-config-file">3.20.11. Having a settings manager/config file</a></h4>
+<h4 id="having-a-settings-manager-config-file"><a class="link" href="#having-a-settings-manager-config-file">3.19.11. Having a settings manager/config file</a></h4>
 
 </div>
 </div>
@@ -796,7 +827,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-22 10:28:12 +00:00
+Last updated 2017-10-22 15:28:50 +00:00
 </div>
 </div>
 </body>
