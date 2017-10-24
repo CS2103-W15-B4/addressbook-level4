@@ -36,16 +36,17 @@
 <li><a href="#editing-a-new-task-code-edittask-code">3.6. Editing a new task : <code>editTask</code></a></li>
 <li><a href="#locating-persons-by-name-code-find-code">3.7. Locating persons by name: <code>find</code></a></li>
 <li><a href="#exporting-a-person-to-a-sting-of-add-command-code-export-code">3.8. Exporting a person to a sting of add command: <code>export</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.9. Deleting a person : <code>delete</code></a></li>
-<li><a href="#deleting-a-task-code-deletetask-code">3.10. Deleting a task : <code>deleteTask</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.11. Selecting a person : <code>select</code></a></li>
-<li><a href="#selecting-a-task-code-selecttask-code">3.12. Selecting a task : <code>selectTask</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.18. Saving the data</a></li>
+<li><a href="#exporting-a-task-to-a-sting-of-addtask-command-code-exporttask-code">3.9. Exporting a task to a sting of addTask command: <code>exportTask</code></a></li>
+<li><a href="#deleting-a-person-code-delete-code">3.10. Deleting a person : <code>delete</code></a></li>
+<li><a href="#deleting-a-task-code-deletetask-code">3.11. Deleting a task : <code>deleteTask</code></a></li>
+<li><a href="#selecting-a-person-code-select-code">3.12. Selecting a person : <code>select</code></a></li>
+<li><a href="#selecting-a-task-code-selecttask-code">3.13. Selecting a task : <code>selectTask</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.14. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.15. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.16. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.17. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.18. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.19. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#coming-in-v2-0">4. Coming in v2.0</a>
@@ -421,13 +422,48 @@ Format: <code>export INDEX</code></p>
 <ul>
 <li>
 <p><code>export 1</code> in the default setting<br>
-Returns <code>add n/Alex Yeoh p/87438807 e/alexyeoh@example.com a/Blk 30 Geylang Street 29, #06-40 r/ t/[friends]</code></p>
+Returns <code>add n/Alex Yeoh p/87438807 e/alexyeoh@example.com a/Blk 30 Geylang Street 29, #06-40 r/ t/friends</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.9. Deleting a person : <code>delete</code></a></h3>
+<h3 id="exporting-a-task-to-a-sting-of-addtask-command-code-exporttask-code"><a class="link" href="#exporting-a-task-to-a-sting-of-addtask-command-code-exporttask-code">3.9. Exporting a task to a sting of addTask command: <code>exportTask</code></a></h3>
+<div class="paragraph">
+<p>Export the details of the task by the index number<br>
+Format: <code>export INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Exports the task at the specified <code>INDEX</code>, selects the task.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export 1</code> in the default setting<br>
+Returns `addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm e/1/1/2099 15:00pm t/friends `</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.10. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -468,7 +504,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.10. Deleting a task : <code>deleteTask</code></a></h3>
+<h3 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.11. Deleting a task : <code>deleteTask</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specific task from the task book.<br>
 Format: <code>deleteTask IDNEX</code></p>
@@ -506,7 +542,7 @@ Deletes the 1st task in the task book.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.11. Selecting a person : <code>select</code></a></h3>
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.12. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code></p>
@@ -547,7 +583,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-task-code-selecttask-code"><a class="link" href="#selecting-a-task-code-selecttask-code">3.12. Selecting a task : <code>selectTask</code></a></h3>
+<h3 id="selecting-a-task-code-selecttask-code"><a class="link" href="#selecting-a-task-code-selecttask-code">3.13. Selecting a task : <code>selectTask</code></a></h3>
 <div class="paragraph">
 <p>Selects the task identified by the index number used in the last task listing.<br>
 Format: <code>selectTask INDEX</code></p>
@@ -582,7 +618,7 @@ Selects the 2nd task in the task book.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.14. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -603,7 +639,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.14. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.15. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -648,7 +684,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.15. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.16. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -680,21 +716,21 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.17. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.18. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.19. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -845,6 +881,10 @@ There is no need to save manually.</p>
 e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
+<p><strong>AddTask</strong> <code>add n/NAME d/Description s/START TIME f/END TIME [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm f/1/1/2099 15:00pm t/friends</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
@@ -854,6 +894,14 @@ e.g. <code>delete 3</code></p>
 <li>
 <p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Export</strong> : <code>export INDEX</code><br>
+e.g. <code>export 3</code></p>
+</li>
+<li>
+<p><strong>Export Task</strong> : <code>exportTask INDEX</code><br>
+e.g. <code>exportTask 3</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
@@ -885,7 +933,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 16:51:51 +00:00
+Last updated 2017-10-24 18:53:23 +00:00
 </div>
 </div>
 </body>
