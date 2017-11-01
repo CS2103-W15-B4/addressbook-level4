@@ -27,9 +27,11 @@ public class TaskListPanel extends UiPart<Region> {
 
     @FXML
     private ListView<TaskCard> taskListView;
+    private ObservableList<ReadOnlyTask> uiList;
 
     public TaskListPanel(ObservableList<ReadOnlyTask> taskList) {
         super(FXML);
+        uiList = taskList;
         setConnections(taskList);
         registerAsAnEventHandler(this);
     }
@@ -83,6 +85,7 @@ public class TaskListPanel extends UiPart<Region> {
             this.showAllTask = false;
             System.out.print("test");
         }
+        setConnections(uiList);
     }
 
     class TaskListViewCell extends ListCell<TaskCard> {
