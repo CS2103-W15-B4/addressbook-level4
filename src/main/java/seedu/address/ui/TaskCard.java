@@ -13,10 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.scene.image.Image;
+
 import seedu.address.model.task.ReadOnlyTask;
 
-import javax.swing.*;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -27,6 +26,7 @@ public class TaskCard extends UiPart<Region> {
     private static ArrayList<String> colors = new ArrayList<String>(
             Arrays.asList("Tomato", "Orange", "DodgerBlue", "MediumSeaGreen", "SlateBlue", "Violet", "Maroon"));
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
+    private static final String ICON = "/images/click.png";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -57,18 +57,15 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private ImageView mark;
 
-    private static final String ICON = "/images/click.png";
+
 
     public TaskCard(ReadOnlyTask task, int displayedIndex) {
         super(FXML);
         this.task = task;
-        //if (!task.getComplete()) {
             id.setText(displayedIndex + ". ");
             initTags(task);
-        //}
         initMark(task);
         bindListeners(task);
-
     }
 
     public ReadOnlyTask getTask () {
@@ -139,6 +136,7 @@ public class TaskCard extends UiPart<Region> {
         if(task.getComplete()) mark.setImage(markIcon);
 
     }
+
     @Override
     public boolean equals(Object other) {
         // short circuit if same object

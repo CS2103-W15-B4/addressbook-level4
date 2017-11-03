@@ -24,6 +24,7 @@ import seedu.address.model.task.ReadOnlyTask;
 public class TaskListPanel extends UiPart<Region> {
     private static final String FXML = "TaskListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TaskListPanel.class);
+    private boolean showAllTask = false;
 
     @FXML
     private ListView<TaskCard> taskListView;
@@ -74,28 +75,27 @@ public class TaskListPanel extends UiPart<Region> {
      * Custom {@code ListCell} that displays the graphics of a {@code TaskCard}.
      */
 
-    private boolean showAllTask =false;
+
 
     @Subscribe
     private void handleNewResultAvailableEvent(NewResultAvailableEvent event) {
-        if (event.message == "Listed all tasks"){
+        if (event.message == "Listed all tasks") {
             this.showAllTask = true;
-            System.out.print("??");
         } else {
             this.showAllTask = false;
-            System.out.print("test");
         }
         setConnections(uiList);
     }
 
+    /**
+     * Custom {@code TaskViewCell} that displays the results of a {@code TaskCard}.
+     */
     class TaskListViewCell extends ListCell<TaskCard> {
-
         @Override
         protected void updateItem(TaskCard task, boolean empty) {
             super.updateItem(task, empty);
 
-            if(showAllTask) {
-                //if (empty || task == null || task.getTask().getComplete()) {
+            if (showAllTask) {
                 if (empty || task == null) {
                     setGraphic(null);
                     setText(null);
