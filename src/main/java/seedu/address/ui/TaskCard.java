@@ -131,6 +131,10 @@ public class TaskCard extends UiPart<Region> {
         });
     }
 
+    /**
+     * initialize marks. If the task is already completed, mark it with a green click.
+     * @param task
+     */
     private  void initMark(ReadOnlyTask task) {
         Image markIcon = new Image(ICON);
         if (task.getComplete()) {
