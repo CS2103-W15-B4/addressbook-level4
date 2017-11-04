@@ -62,8 +62,8 @@ public class TaskCard extends UiPart<Region> {
     public TaskCard(ReadOnlyTask task, int displayedIndex) {
         super(FXML);
         this.task = task;
-            id.setText(displayedIndex + ". ");
-            initTags(task);
+        id.setText(displayedIndex + ". ");
+        initTags(task);
         initMark(task);
         bindListeners(task);
     }
@@ -133,7 +133,9 @@ public class TaskCard extends UiPart<Region> {
 
     private  void initMark(ReadOnlyTask task) {
         Image markIcon = new Image(ICON);
-        if(task.getComplete()) mark.setImage(markIcon);
+        if (task.getComplete()) {
+            mark.setImage(markIcon);
+        }
 
     }
 
