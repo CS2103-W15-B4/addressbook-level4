@@ -140,7 +140,7 @@ public class TaskBook implements ReadOnlyTaskBook {
         }
 
         Task updatedTask = new Task(
-                target.getName(),
+                target.getTaskName(),
                 target.getDescription(),
                 target.getStartDateTime(),
                 target.getEndDateTime(),

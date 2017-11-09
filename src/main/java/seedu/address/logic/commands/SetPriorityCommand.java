@@ -65,7 +65,7 @@ public class SetPriorityCommand extends UndoableCommand {
         }
 
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
-        return new CommandResult(String.format(MESSAGE_UPDATE_TASK_PRIORITY_SUCCESS, taskToUpdate.getName()));
+        return new CommandResult(String.format(MESSAGE_UPDATE_TASK_PRIORITY_SUCCESS, taskToUpdate.getTaskName()));
     }
 
     /**
@@ -81,7 +81,7 @@ public class SetPriorityCommand extends UndoableCommand {
         }
 
         Task updatedTask = new Task(
-                target.getName(),
+                target.getTaskName(),
                 target.getDescription(),
                 target.getStartDateTime(),
                 target.getEndDateTime(),

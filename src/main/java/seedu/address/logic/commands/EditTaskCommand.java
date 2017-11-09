@@ -3,10 +3,9 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASKNAME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.ArrayList;
@@ -19,8 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.*;
 import seedu.address.model.task.exceptions.DuplicateTaskException;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
@@ -37,14 +35,13 @@ public class EditTaskCommand extends UndoableCommand {
             + "by the index number used in the last task listing. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_TASKNAME + "TASK_NAME] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_START_DATE_TIME + "START_DATE_TIME] "
             + "[" + PREFIX_END_DATE_TIME + "END_DATE_TIME] "
-            + "[" + PREFIX_PRIORITY + "INTEGER[1~5] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "picnic "
+            + PREFIX_TASKNAME + "picnic "
             + PREFIX_DESCRIPTION + "have fun at Botanic Garden "
             + PREFIX_START_DATE_TIME + "1/1/2017 12:00pm "
             + PREFIX_END_DATE_TIME + "1/1/2017 15:00pm "
@@ -63,7 +60,7 @@ public class EditTaskCommand extends UndoableCommand {
      */
     public EditTaskCommand(Index index, EditTaskDescriptor editTaskDescriptor) {
         requireNonNull(index);
-        requireNonNull(editTaskDescriptor);
+         requireNonNull(editTaskDescriptor);
 
         this.index = index;
         this.editTaskDescriptor = new EditTaskDescriptor(editTaskDescriptor);
@@ -99,10 +96,10 @@ public class EditTaskCommand extends UndoableCommand {
                                              EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
 
-        String updatedTaskName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
-        String updatedDescription = editTaskDescriptor.getDescription().orElse(taskToEdit.getDescription());
-        String updatedStartDateTime = editTaskDescriptor.getStartDateTime().orElse(taskToEdit.getStartDateTime());
-        String updatedEndDateTime = editTaskDescriptor.getEndDateTime().orElse(taskToEdit.getEndDateTime());
+        TaskName updatedTaskName = editTaskDescriptor.getTaskName().orElse(taskToEdit.getTaskName());
+        Description updatedDescription = editTaskDescriptor.getDescription().orElse(taskToEdit.getDescription());
+        StartDateTime updatedStartDateTime = editTaskDescriptor.getStartDateTime().orElse(taskToEdit.getStartDateTime());
+        EndDateTime updatedEndDateTime = editTaskDescriptor.getEndDateTime().orElse(taskToEdit.getEndDateTime());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
         Boolean updateComplete = editTaskDescriptor.getComplete().orElse(taskToEdit.getComplete());
         //Remark updatedRemark = taskToEdit.getRemark(); // edit command does not allow editing remarks
@@ -136,10 +133,10 @@ public class EditTaskCommand extends UndoableCommand {
      * corresponding field value of the task.
      */
     public static class EditTaskDescriptor {
-        private String taskName;
-        private String description;
-        private String start;
-        private String end;
+        private TaskName taskName;
+        private Description description;
+        private StartDateTime start;
+        private EndDateTime end;
         private Set<Tag> tags;
         private Boolean complete;
 
@@ -162,35 +159,35 @@ public class EditTaskCommand extends UndoableCommand {
                     this.tags, this.complete);
         }
 
-        public void setName(String taskName) {
+        public void setTaskName(TaskName taskName) {
             this.taskName = taskName;
         }
 
-        public Optional<String> getName() {
+        public Optional<TaskName> getTaskName() {
             return Optional.ofNullable(taskName);
         }
 
-        public void setDescription(String description) {
+        public void setDescription(Description description) {
             this.description = description;
         }
 
-        public Optional<String> getDescription() {
+        public Optional<Description> getDescription() {
             return Optional.ofNullable(description);
         }
 
-        public void setStart(String start) {
+        public void setStart(StartDateTime start) {
             this.start = start;
         }
 
-        public Optional<String> getStartDateTime() {
+        public Optional<StartDateTime> getStartDateTime() {
             return Optional.ofNullable(start);
         }
 
-        public void setEnd(String end) {
+        public void setEnd(EndDateTime end) {
             this.end = end;
         }
 
-        public Optional<String> getEndDateTime() {
+        public Optional<EndDateTime> getEndDateTime() {
             return Optional.ofNullable(end);
         }
 
@@ -225,7 +222,7 @@ public class EditTaskCommand extends UndoableCommand {
             // state check
             EditTaskDescriptor e = (EditTaskDescriptor) other;
 
-            return getName().equals(e.getName())
+            return getTaskName().equals(e.getTaskName())
                     && getDescription().equals(e.getDescription())
                     && getStartDateTime().equals(e.getStartDateTime())
                     && getEndDateTime().equals(e.getEndDateTime())

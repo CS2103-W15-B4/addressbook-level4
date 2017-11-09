@@ -10,8 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.*;
 
 /**
  * JAXB-friendly version of the Task.
@@ -19,13 +18,13 @@ import seedu.address.model.task.Task;
 public class XmlAdaptedTask {
 
     @XmlElement(required = true)
-    private String taskName;
+    private TaskName taskName;
     @XmlElement(required = true)
-    private String taskDescription;
+    private Description taskDescription;
     @XmlElement(required = true)
-    private String startDateTime;
+    private StartDateTime startDateTime;
     @XmlElement(required = true)
-    private String endDateTime;
+    private EndDateTime endDateTime;
     @XmlElement
     private Integer id;
     @XmlElement
@@ -51,7 +50,7 @@ public class XmlAdaptedTask {
      * @param source future changes to this will not affect the created XmlAdaptedPerson
      */
     public XmlAdaptedTask(ReadOnlyTask source) {
-        taskName = source.getName();
+        taskName = source.getTaskName();
         taskDescription = source.getDescription();
         startDateTime = source.getStartDateTime();
         endDateTime = source.getEndDateTime();
@@ -75,10 +74,10 @@ public class XmlAdaptedTask {
         for (XmlAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
         }
-        final String taskName = this.taskName;
-        final String taskDescription = this.taskDescription;
-        final String startDateTime = this.startDateTime;
-        final String endDateTime = this.endDateTime;
+        final TaskName taskName = this.taskName;
+        final Description taskDescription = this.taskDescription;
+        final StartDateTime startDateTime = this.startDateTime;
+        final EndDateTime endDateTime = this.endDateTime;
         final Set<Tag> tags = new HashSet<>(personTags);
         final Boolean complete = this.complete;
         final ArrayList<Integer> peopleIndices = new ArrayList<>(this.peopleIndices);

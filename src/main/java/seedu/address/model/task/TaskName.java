@@ -6,9 +6,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
  * Represents a Task's name in the task book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidTaskName(String)}
  */
-public class Name {
+public class TaskName {
 
     public static final String MESSAGE_NAME_CONSTRAINTS =
             "Task names should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -19,44 +19,44 @@ public class Name {
      */
     public static final String NAME_VALIDATION_REGEX = "[^\\s].*";
 
-    public final String name;
+    public final String taskName;
 
     /**
      * Validates given name.
      *
      * @throws IllegalValueException if given name string is invalid.
      */
-    public Name(String name) throws IllegalValueException {
-        requireNonNull(name);
-        if (!isValidName(name)) {
+    public TaskName(String taskName) throws IllegalValueException {
+        requireNonNull(taskName);
+        if (!isValidTaskName(taskName)) {
             throw new IllegalValueException(MESSAGE_NAME_CONSTRAINTS);
         }
-        this.name = name;
+        this.taskName = taskName;
     }
 
     /**
      * Returns true if a given string is a valid task name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidTaskName(String test) {
         return test.matches(NAME_VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return name;
+        return taskName;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Name // instanceof handles nulls
-                && this.name.equals(((Name) other).name)); // state check
+                || (other instanceof TaskName // instanceof handles nulls
+                && this.taskName.equals(((TaskName) other).taskName)); // state check
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return taskName.hashCode();
     }
 
 }

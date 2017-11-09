@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalTasks.getTypicalTaskbook;
+import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class ClearTaskCommandTest {
 
     @Test
     public void executeNonEmptyTaskBookSuccess() {
-        Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new TaskBook(), new UserPrefs());
         assertCommandSuccess(prepareCommand(model), model, ClearTaskCommand.MESSAGE_SUCCESS, model);
     }

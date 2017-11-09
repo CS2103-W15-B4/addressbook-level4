@@ -22,7 +22,7 @@ public class SystemTestSetupHelper {
     public TestApp setupApplication() {
         try {
             FxToolkit.setupApplication(() -> testApp = new TestApp(TypicalPersons::getTypicalAddressBook,
-                    TypicalTasks::getTypicalTaskbook,
+                    TypicalTasks::getTypicalTaskBook,
                     TestApp.SAVE_LOCATION_FOR_TESTING,
                     TestApp.SAVE_LOCATION_FOR_TASK_BOOK_TESTING));
         } catch (TimeoutException te) {

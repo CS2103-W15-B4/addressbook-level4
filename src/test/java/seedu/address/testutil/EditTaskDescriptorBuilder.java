@@ -28,7 +28,7 @@ public class EditTaskDescriptorBuilder {
      */
     public EditTaskDescriptorBuilder(ReadOnlyTask task) {
         descriptor = new EditTaskDescriptor();
-        descriptor.setName(task.getName());
+        descriptor.setTaskName(task.getTaskName());
         descriptor.setDescription(task.getDescription());
         descriptor.setStart(task.getStartDateTime());
         descriptor.setEnd(task.getEndDateTime());
@@ -40,7 +40,7 @@ public class EditTaskDescriptorBuilder {
      */
     public EditTaskDescriptorBuilder withName(String name) {
         try {
-            ParserUtil.parseString(Optional.of(name)).ifPresent(descriptor::setName);
+            ParserUtil.parseTaskName(Optional.of(name)).ifPresent(descriptor::setTaskName);
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("name is expected to be unique.");
         }
@@ -52,7 +52,7 @@ public class EditTaskDescriptorBuilder {
      */
     public EditTaskDescriptorBuilder withDescription(String description) {
         try {
-            ParserUtil.parseString(Optional.of(description)).ifPresent(descriptor::setDescription);
+            ParserUtil.parseDescription(Optional.of(description)).ifPresent(descriptor::setDescription);
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("description is expected to be unique.");
         }
@@ -64,7 +64,7 @@ public class EditTaskDescriptorBuilder {
      */
     public EditTaskDescriptorBuilder withStart(String start) {
         try {
-            ParserUtil.parseString(Optional.of(start)).ifPresent(descriptor::setStart);
+            ParserUtil.parseStart(Optional.of(start)).ifPresent(descriptor::setStart);
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("start time is expected to be unique.");
         }
@@ -76,7 +76,7 @@ public class EditTaskDescriptorBuilder {
      */
     public EditTaskDescriptorBuilder withEnd(String end) {
         try {
-            ParserUtil.parseString(Optional.of(end)).ifPresent(descriptor::setEnd);
+            ParserUtil.parseEnd(Optional.of(end)).ifPresent(descriptor::setEnd);
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("end time is expected to be unique.");
         }

@@ -4,7 +4,7 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASKNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -17,8 +17,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.*;
 
 /**
  * A parser class for addTask Command
@@ -32,19 +31,19 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
      */
     public AddTaskCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION,
+                ArgumentTokenizer.tokenize(args, PREFIX_TASKNAME, PREFIX_DESCRIPTION,
                         PREFIX_START_DATE_TIME, PREFIX_END_DATE_TIME, PREFIX_PRIORITY, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DESCRIPTION,
+        if (!arePrefixesPresent(argMultimap, PREFIX_TASKNAME, PREFIX_DESCRIPTION,
                 PREFIX_START_DATE_TIME, PREFIX_END_DATE_TIME)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
 
         try {
-            String name = ParserUtil.parseString(argMultimap.getValue(PREFIX_NAME)).get();
-            String description = ParserUtil.parseString(argMultimap.getValue(PREFIX_DESCRIPTION)).get();
-            String startDateTime = ParserUtil.parseString(argMultimap.getValue(PREFIX_START_DATE_TIME)).get();
-            String endDateTime = ParserUtil.parseString(argMultimap.getValue(PREFIX_END_DATE_TIME)).get();
+            TaskName taskName = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_TASKNAME)).get();
+            Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION)).get();
+            StartDateTime startDateTime = ParserUtil.parseStart(argMultimap.getValue(PREFIX_START_DATE_TIME)).get();
+            EndDateTime endDateTime = ParserUtil.parseEnd(argMultimap.getValue(PREFIX_END_DATE_TIME)).get();
 
             Optional<Integer> priority = ParserUtil.parseInteger(argMultimap.getValue(PREFIX_PRIORITY));
 
@@ -54,9 +53,9 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
             // Renew the task object with the priority parameter specially set if given
             if (priority.isPresent()) {
                 Integer priorityValue = priority.get();
-                task = new Task(name, description, startDateTime, endDateTime, tagList, complete, priorityValue);
+                task = new Task(taskName, description, startDateTime, endDateTime, tagList, complete, priorityValue);
             } else {
-                task = new Task(name, description, startDateTime, endDateTime, tagList, complete);
+                task = new Task(taskName, description, startDateTime, endDateTime, tagList, complete);
             }
 
             return new AddTaskCommand(task);

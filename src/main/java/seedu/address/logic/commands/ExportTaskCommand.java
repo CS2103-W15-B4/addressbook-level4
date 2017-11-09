@@ -54,7 +54,7 @@ public class ExportTaskCommand extends Command {
         taskToExport.getTags().forEach(builder::append);
         String feedBack = String.format(MESSAGE_SUCCESS,
                 String.join(" ",
-                        "n/" + taskToExport.getName(),
+                        "n/" + taskToExport.getTaskName(),
                         "d/" + taskToExport.getDescription(),
                         "s/" + taskToExport.getStartDateTime(),
                         "f/" + taskToExport.getEndDateTime(),

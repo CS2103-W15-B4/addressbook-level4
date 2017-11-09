@@ -71,7 +71,7 @@ public abstract class AddressBookGuiTest {
     }
 
     protected TaskBook getInitialTaskData() {
-        return TypicalTasks.getTypicalTaskbook();
+        return TypicalTasks.getTypicalTaskBook();
     }
 
     protected CommandBoxHandle getCommandBox() {

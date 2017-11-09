@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalTasks.getTypicalTaskbook;
+import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class TaskByPriorityCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
         taskByPriorityCommand = new TaskByPriorityCommand();
         taskByPriorityCommand.setData(model, new CommandHistory(), new UndoRedoStack());
     }
@@ -32,7 +32,7 @@ public class TaskByPriorityCommandTest {
     @Test
     public void execute() {
         Model expectedModel;
-        expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
         expectedModel.taskByPriority();
         assertCommandSuccess(taskByPriorityCommand, model, taskByPriorityCommand.MESSAGE_SUCCESS, expectedModel);
     }

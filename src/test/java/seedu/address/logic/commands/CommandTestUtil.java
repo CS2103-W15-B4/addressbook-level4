@@ -24,6 +24,7 @@ import seedu.address.model.person.ContainsKeywordsPredicate;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.EditTaskDescriptorBuilder;
@@ -200,8 +201,10 @@ public class CommandTestUtil {
      */
     public static void showFirstTaskOnly(Model model) {
         ReadOnlyTask task = model.getTaskBook().getTaskList().get(0);
-        List<String> name = Arrays.asList(task.getName());
-        model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(name));
+
+        //List<TaskName> taskName = Arrays.asList(task.getTaskName());
+        final String[] splitTaskName = task.getTaskName().taskName.split("\\s+");
+        model.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(splitTaskName[0])));
 
         assert model.getFilteredTaskList().size() == 1;
     }

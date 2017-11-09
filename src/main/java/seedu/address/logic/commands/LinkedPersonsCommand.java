@@ -40,7 +40,7 @@ public class LinkedPersonsCommand extends Command {
         ReadOnlyTask targetTask = lastShownList.get(targetIndex.getZeroBased());
 
         model.updateFilteredPersonList(person->targetTask.getPeopleIds().contains(person.getId()));
-        return new CommandResult(String.format(MESSAGE_LINKED_PERSONS_SUCCESS, targetTask.getName()));
+        return new CommandResult(String.format(MESSAGE_LINKED_PERSONS_SUCCESS, targetTask.getTaskName()));
     }
 
     @Override

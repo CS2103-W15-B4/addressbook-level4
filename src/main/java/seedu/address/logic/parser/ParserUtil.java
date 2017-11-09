@@ -15,6 +15,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.*;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -54,6 +55,15 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<TaskName> parseTaskName(Optional<String> name) throws IllegalValueException {
+        requireNonNull(name);
+        return name.isPresent() ? Optional.of(new TaskName(name.get())) : Optional.empty();
+    }
+
+    /**
      * Parses a {@code Optional<String> stringOptional} into an optional of the same type
      * @param stringOptional , the optional passed in
      * @return optional of String type
@@ -73,13 +83,35 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> phone} into an {@code Optional<Phone>} if {@code phone} is present.
+     * Parses a {@code Optional<String> description} into an {@code Optional<Description>}
+     * if {@code description} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<Phone> parsePhone(Optional<String> phone) throws IllegalValueException {
-        requireNonNull(phone);
-        return phone.isPresent() ? Optional.of(new Phone(phone.get())) : Optional.empty();
+    public static Optional<Description> parseDescription(Optional<String> description) throws IllegalValueException {
+        requireNonNull(description);
+        return description.isPresent() ? Optional.of(new Description(description.get())) : Optional.empty();
     }
+
+    /**
+     * Parses a {@code Optional<String> start date time} into an {@code Optional<StartDateTime>}
+     * if {@code start} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<StartDateTime> parseStart(Optional<String> start) throws IllegalValueException {
+        requireNonNull(start);
+        return start.isPresent() ? Optional.of(new StartDateTime(start.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> end date time} into an {@code Optional<EdDateTime>}
+     * if {@code end} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<EndDateTime> parseEnd(Optional<String> end) throws IllegalValueException {
+        requireNonNull(end);
+        return end.isPresent() ? Optional.of(new EndDateTime(end.get())) : Optional.empty();
+    }
+
 
     /**
      * Parses a {@code Optional<String> address} into an {@code Optional<Address>} if {@code address} is present.
@@ -97,6 +129,15 @@ public class ParserUtil {
     public static Optional<Email> parseEmail(Optional<String> email) throws IllegalValueException {
         requireNonNull(email);
         return email.isPresent() ? Optional.of(new Email(email.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> phone} into an {@code Optional<Phone>} if {@code phone} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Phone> parsePhone(Optional<String> phone) throws IllegalValueException {
+        requireNonNull(phone);
+        return phone.isPresent() ? Optional.of(new Phone(phone.get())) : Optional.empty();
     }
 
     /**

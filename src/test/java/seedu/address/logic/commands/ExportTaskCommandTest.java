@@ -8,7 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showFirstTaskOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalTasks.getTypicalTaskbook;
+import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -38,7 +38,7 @@ public class ExportTaskCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ExportTaskCommandTest {
         final StringBuilder firstBuilder = new StringBuilder();
         firstTaskToExport.getTags().forEach(firstBuilder::append);
         String firstMessage = String.format(ExportTaskCommand.MESSAGE_SUCCESS,
-                String.join(" ", "n/" + firstTaskToExport.getName(),
+                String.join(" ", "n/" + firstTaskToExport.getTaskName(),
                         "d/" + firstTaskToExport.getDescription(),
                         "s/" + firstTaskToExport.getStartDateTime(),
                         "f/" + firstTaskToExport.getEndDateTime(),
@@ -59,7 +59,7 @@ public class ExportTaskCommandTest {
         final StringBuilder lastBuilder = new StringBuilder();
         lastTaskToExport.getTags().forEach(lastBuilder::append);
         String lastMessage = String.format(ExportTaskCommand.MESSAGE_SUCCESS,
-                String.join(" ", "n/" + lastTaskToExport.getName(),
+                String.join(" ", "n/" + lastTaskToExport.getTaskName(),
                         "d/" + lastTaskToExport.getDescription(),
                         "s/" + lastTaskToExport.getStartDateTime(),
                         "f/" + lastTaskToExport.getEndDateTime(),
@@ -85,7 +85,7 @@ public class ExportTaskCommandTest {
         final StringBuilder builder = new StringBuilder();
         taskToExport.getTags().forEach(builder::append);
         String expectedMessage = String.format(ExportTaskCommand.MESSAGE_SUCCESS,
-                String.join(" ", "n/" + taskToExport.getName(),
+                String.join(" ", "n/" + taskToExport.getTaskName(),
                         "d/" + taskToExport.getDescription(),
                         "s/" + taskToExport.getStartDateTime(),
                         "f/" + taskToExport.getEndDateTime(),

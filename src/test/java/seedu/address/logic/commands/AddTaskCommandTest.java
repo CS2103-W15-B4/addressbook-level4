@@ -16,10 +16,12 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyTaskBook;
 import seedu.address.model.TaskBook;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -28,6 +30,8 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.exceptions.DuplicateTaskException;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
+import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.TaskBuilder;
 
 public class AddTaskCommandTest {
 
@@ -43,25 +47,23 @@ public class AddTaskCommandTest {
     @Test
     public void execute_taskAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
-        Task validTask = new Task("task1", "fun", "12:00", "23:00");
+        //Task validTask = new Task("task1", "fun", "12:00", "23:00");
+        Task validTask = new TaskBuilder().build();
+        CommandResult commandResult = getAddCommandForTask(validTask, modelStub).execute();
 
-        //CommandResult commandResult = getAddCommandForTask(validTask, modelStub).execute();
-
-        //assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validTask), commandResult.feedbackToUser);
-
-        modelStub.addTask(validTask);
-        assertEquals(1, Arrays.asList(validTask).size());
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validTask), commandResult.feedbackToUser);
+        assertEquals(Arrays.asList(validTask), modelStub.tasksAdded);
     }
 
     @Test
     public void execute_duplicateTask_throwsCommandException() throws Exception {
-        ModelStub modelStub = new ModelStubThrowingDuplicateTaskException();
-        Task validTask = new Task("task1", "fun", "12:00", "23:00");
+        AddTaskCommandTest.ModelStub modelStub = new AddTaskCommandTest.ModelStubThrowingDuplicateTaskException();
+        Task validTask = new TaskBuilder().build();
 
-        thrown.expect(DuplicateTaskException.class);
-        //thrown.expectMessage(AddTaskCommand.MESSAGE_DUPLICATE_TASK);
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(AddTaskCommand.MESSAGE_DUPLICATE_TASK);
 
-        modelStub.addTask(validTask);
+        getAddCommandForTask(validTask, modelStub).execute();
     }
 
     @Test

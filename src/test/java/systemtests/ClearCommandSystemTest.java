@@ -71,10 +71,10 @@ public class ClearCommandSystemTest extends AddressBookSystemTest {
      */
     private void assertCommandSuccess(String command) {
         TestApp testApp = new TestApp(TypicalPersons::getTypicalAddressBook,
-                TypicalTasks::getTypicalTaskbook,
+                TypicalTasks::getTypicalTaskBook,
                 TestApp.SAVE_LOCATION_FOR_TESTING, TestApp.SAVE_LOCATION_FOR_TASK_BOOK_TESTING);
         assertCommandSuccess(command, ClearCommand.MESSAGE_SUCCESS,
-                        new ModelManager(new AddressBook(), TypicalTasks.getTypicalTaskbook(), new UserPrefs()));
+                        new ModelManager(new AddressBook(), TypicalTasks.getTypicalTaskBook(), new UserPrefs()));
     }
 
     /**

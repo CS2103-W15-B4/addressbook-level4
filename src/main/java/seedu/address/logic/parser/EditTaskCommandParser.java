@@ -5,9 +5,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASKNAME;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -34,7 +34,7 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
     public EditTaskCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_START_DATE_TIME,
+                ArgumentTokenizer.tokenize(args, PREFIX_TASKNAME, PREFIX_DESCRIPTION, PREFIX_START_DATE_TIME,
                         PREFIX_END_DATE_TIME, PREFIX_TAG);
 
         Index index;
@@ -47,12 +47,12 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
 
         EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         try {
-            ParserUtil.parseString(argMultimap.getValue(PREFIX_NAME)).ifPresent(editTaskDescriptor::setName);
-            ParserUtil.parseString(argMultimap.getValue(PREFIX_DESCRIPTION))
+            ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_TASKNAME)).ifPresent(editTaskDescriptor::setTaskName);
+            ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION))
                     .ifPresent(editTaskDescriptor::setDescription);
-            ParserUtil.parseString(argMultimap.getValue(PREFIX_START_DATE_TIME))
+            ParserUtil.parseStart(argMultimap.getValue(PREFIX_START_DATE_TIME))
                     .ifPresent(editTaskDescriptor::setStart);
-            ParserUtil.parseString(argMultimap.getValue(PREFIX_END_DATE_TIME)).ifPresent(editTaskDescriptor::setEnd);
+            ParserUtil.parseEnd(argMultimap.getValue(PREFIX_END_DATE_TIME)).ifPresent(editTaskDescriptor::setEnd);
             parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editTaskDescriptor::setTags);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);

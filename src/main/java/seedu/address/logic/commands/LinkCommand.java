@@ -84,7 +84,7 @@ public class LinkCommand extends UndoableCommand {
         } catch (TaskNotFoundException e) {
             throw new AssertionError("can never reach this");
         }
-        return new CommandResult(String.format(MESSAGE_LINK_SUCCESS, taskLinked.getName())
+        return new CommandResult(String.format(MESSAGE_LINK_SUCCESS, taskLinked.getTaskName())
                                     + personNameList);
     }
 

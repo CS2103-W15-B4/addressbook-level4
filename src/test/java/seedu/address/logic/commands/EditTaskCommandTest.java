@@ -12,7 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showFirstTaskOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalTasks.getTypicalTaskbook;
+import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.Test;
 
@@ -35,9 +35,9 @@ import seedu.address.testutil.TaskBuilder;
  */
 public class EditTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
 
-    /*@Test
+    @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() throws Exception {
         Task editedTask = new TaskBuilder().build();
         //model.updateTaskPriority(model.getFilteredTaskList().get(0), 3);
@@ -51,7 +51,7 @@ public class EditTaskCommandTest {
         expectedModel.updateTask(model.getFilteredTaskList().get(0), editedTask);
 
         assertCommandSuccess(editTaskCommand, model, expectedMessage, expectedModel);
-    }*/
+    }
 
     /*@Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() throws Exception {

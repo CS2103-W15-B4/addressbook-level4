@@ -9,7 +9,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalTasks.getTypicalTaskbook;
+import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -36,7 +36,7 @@ public class SetPriorityCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
     }
 
     @Test
@@ -96,7 +96,7 @@ public class SetPriorityCommandTest {
         try {
             CommandResult commandResult = setPriorityCommand.execute();
             assertEquals(String.format(SetPriorityCommand.MESSAGE_UPDATE_TASK_PRIORITY_SUCCESS,
-                    getTypicalTaskbook().getTaskList().get(indexInteger).getName()),
+                    getTypicalTaskBook().getTaskList().get(indexInteger).getTaskName()),
                     commandResult.feedbackToUser);
         } catch (CommandException ce) {
             throw new IllegalArgumentException("Execution of command should not fail.", ce);

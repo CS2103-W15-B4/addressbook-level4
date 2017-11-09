@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalTasks.getTypicalTaskbook;
+import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,14 +24,14 @@ public class TaskByEndCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
         taskByEndCommand = new TaskByEndCommand();
         taskByEndCommand.setData(model, new CommandHistory(), new UndoRedoStack());
     }
 
     @Test
     public void execute() {
-        expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskbook(), new UserPrefs());
+        expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
         expectedModel.taskByEnd();
         assertCommandSuccess(taskByEndCommand, model, taskByEndCommand.MESSAGE_SUCCESS, expectedModel);
     }

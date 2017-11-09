@@ -3,15 +3,21 @@ package seedu.address.testutil;
 import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Description;
+import seedu.address.model.task.EndDateTime;
+import seedu.address.model.task.StartDateTime;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskName;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
  * A utility class to help with building Task objects.
  */
 public class TaskBuilder {
+
 
     public static final String DEFAULT_NAME = "picnic";
     public static final String DEFAULT_DESCRIPTION = "have fun at Botanic Garden";
@@ -24,10 +30,10 @@ public class TaskBuilder {
 
     public TaskBuilder() {
         try {
-            String defaultName = new String(DEFAULT_NAME);
-            String defaultDescription = new String(DEFAULT_DESCRIPTION);
-            String defaultStart = new String(DEFAULT_START_DATE_TIME);
-            String defaultEnd = new String(DEFAULT_END_DATE_TIME);
+            TaskName defaultName = new TaskName(DEFAULT_NAME);
+            Description defaultDescription = new Description(DEFAULT_DESCRIPTION);
+            StartDateTime defaultStart = new StartDateTime(DEFAULT_START_DATE_TIME);
+            EndDateTime defaultEnd = new EndDateTime(DEFAULT_END_DATE_TIME);
             Integer defaultPriority = new Integer(DEFAULT_PRIORITY);
             Set<Tag> defaultTags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
             this.task = new Task(defaultName, defaultDescription, defaultStart, defaultEnd,
@@ -47,8 +53,12 @@ public class TaskBuilder {
     /**
      * Sets the {@code Name} of the {@code Task} that we are building.
      */
-    public TaskBuilder withName(String name) {
-        this.task.setName(name);
+    public TaskBuilder withName(String taskName) {
+        try {
+            this.task.setName(new TaskName(taskName));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("name is expected to be unique.");
+        }
         return this;
     }
 
@@ -68,7 +78,11 @@ public class TaskBuilder {
      * Sets the {@code Description} of the {@code Task} that we are building.
      */
     public TaskBuilder withDescription(String description) {
-        this.task.setDescription(description);
+        try {
+            this.task.setDescription(new Description(description));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("description is expected to be unique.");
+        }
         return this;
     }
 
@@ -76,7 +90,11 @@ public class TaskBuilder {
      * Sets the {@code Start} of the {@code Task} that we are building.
      */
     public TaskBuilder withStart(String start) {
-        this.task.setStartDateTime(start);
+        try {
+            this.task.setStartDateTime(new StartDateTime(start));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("start date time is expected to be unique.");
+        }
         return this;
     }
 
@@ -84,7 +102,11 @@ public class TaskBuilder {
      * Sets the {@code End} of the {@code Task} that we are building.
      */
     public TaskBuilder withEnd(String end) {
-        this.task.setEndDateTime(end);
+        try {
+            this.task.setEndDateTime(new EndDateTime(end));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("end date time is expected to be unique.");
+        }
         return this;
     }
 

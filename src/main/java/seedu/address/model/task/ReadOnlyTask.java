@@ -14,14 +14,14 @@ import seedu.address.model.tag.UniqueTagList;
 public interface ReadOnlyTask {
 
     // Content property
-    ObjectProperty<String> nameProperty();
-    String getName();
-    ObjectProperty<String> descriptionProperty();
-    String getDescription();
-    ObjectProperty<String> startTimeProperty();
-    String getStartDateTime();
-    ObjectProperty<String> endTimeProperty();
-    String getEndDateTime();
+    ObjectProperty<TaskName> nameProperty();
+    TaskName getTaskName();
+    ObjectProperty<Description> descriptionProperty();
+    Description getDescription();
+    ObjectProperty<StartDateTime> startTimeProperty();
+    StartDateTime getStartDateTime();
+    ObjectProperty<EndDateTime> endTimeProperty();
+    EndDateTime getEndDateTime();
 
     // functional property
     ObjectProperty<Integer> priorityProperty();
@@ -42,7 +42,7 @@ public interface ReadOnlyTask {
     default boolean isSameStateAs(ReadOnlyTask other) {
         return other == this // short circuit if same object
                 || other != null // this is first to avoid NPE below
-                && other.getName().equals(this.getName()) // state checks here onwards
+                && other.getTaskName().equals(this.getTaskName()) // state checks here onwards
                 && other.getDescription().equals(this.getDescription())
                 && other.getStartDateTime().equals(this.getStartDateTime())
                 && other.getEndDateTime().equals(this.getEndDateTime())
@@ -58,7 +58,7 @@ public interface ReadOnlyTask {
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getTaskName())
                 .append(" Description: ")
                 .append(getDescription())
                 .append(" Start: ")
