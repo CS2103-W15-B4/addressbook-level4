@@ -97,6 +97,50 @@ Returns <code>john</code> and <code>John Doe</code></p>
 <li>
 <p><code>find Betsy/Tim/John</code><br>
 Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>
+==== Locating tasks by name: <code>findTask</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finds tasks whose names or description  contain any of the given keywords.<br>
+Format: <code>findTask</code>/<code>ft</code><br>
+Details: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>Picnic</code> will match <code>picnic</code></p>
+</li>
+<li>
+<p>The order of the keywords matters. e.g. <code>final exam</code> will not match <code>exam final</code></p>
+</li>
+<li>
+<p>Only the name/description are searched.</p>
+</li>
+<li>
+<p>Full words are not need for matching e.g. <code>meet</code> will match <code>meeting</code></p>
+</li>
+<li>
+<p>Tasks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>final/meet</code> will return <code>CS2103 final</code>, <code>CS2101 meeting</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find picnic</code><br>
+Returns any task having name/description <code>picnic</code></p>
+</li>
+<li>
+<p><code>find picnic/meeting</code><br>
+Returns any task having name/description <code>picnic</code> or <code>meeting</code>
 ==== Exporting a person to a string of add command : <code>export</code></p>
 </li>
 </ul>
@@ -170,30 +214,24 @@ Returns `addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm e/1/1/
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-tasks-by-name-code-findtask-code"><a class="link" href="#locating-tasks-by-name-code-findtask-code">Locating tasks by name: <code>findTask</code></a></h4>
+<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">Deleting a task : <code>deleteTask</code></a></h4>
 <div class="paragraph">
-<p>Finds tasks whose names or description  contain any of the given keywords.<br>
-Format: <code>findTask</code>/<code>ft</code><br>
-Details: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Deletes the specific task from the task book.<br>
+Format: <code>deleteTask</code>/<code>dt</code><br>
+Details: <code>deleteTask IDNEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>Picnic</code> will match <code>picnic</code></p>
+<p>Deletes the task at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The order of the keywords matters. e.g. <code>final exam</code> will not match <code>exam final</code></p>
+<p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>Only the name/description are searched.</p>
-</li>
-<li>
-<p>Full words are not need for matching e.g. <code>meet</code> will match <code>meeting</code></p>
-</li>
-<li>
-<p>Tasks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>final/meet</code> will return <code>CS2103 final</code>, <code>CS2101 meeting</code></p>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
@@ -205,12 +243,334 @@ Details: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find picnic</code><br>
-Returns any task having name/description <code>picnic</code></p>
+<p><code>list</code><br></p>
 </li>
 <li>
-<p><code>find picnic/meeting</code><br>
-Returns any task having name/description <code>picnic</code> or <code>meeting</code></p>
+<p><code>deleteTask</code> 1<br>
+Deletes the 1st task in the task book.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">Marking a task : <code>markTask</code></a></h4>
+<div class="paragraph">
+<p>Marks the specific task from the task book.<br>
+Format: <code>markTask</code>/<code>mt</code><br>
+Details: <code>markTask INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Marks the task at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listTask</code><br></p>
+</li>
+<li>
+<p><code>markTask 1</code><br>
+Marks the 1st task in the task book to be completed and the marked task will disappear in the result list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">Setting a priority for a task : <code>setPriority</code></a></h4>
+<div class="paragraph">
+<p>Sets the priority field of a task that is already present in ths taskBook with an integer value between 1 to 5.<br>
+Format: <code>setPriority</code>/<code>stp</code><br>
+Details: <code>setPriority INDEX c/new value specified</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Sets the priority value of the current task with the specific INDEX provided.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The new value of the task&#8217;s priority should still be between 1 to 5 (inclusive).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setPriority 1 c/1</code><br>
+Sets the priority of this task to be <code>Super Important</code>.</p>
+</li>
+<li>
+<p><code>setPriority 1 c/6</code><br>
+A warning message is shown: A priority value is defined within integer range of 1 to 5.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
+<div class="paragraph">
+<p>Sorts the task currently present in the taskBook by priority.<br>
+Format: <code>taskByPriority</code>/<code>tbp</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">Sorting tasks by end date : <code>taskbyend</code></a></h4>
+<div class="paragraph">
+<p>Sorts the list of tasks by their end date<br>
+Format: <code>taskByEnd</code>/<code>tbe</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This sorting will not affect the order of the tasks currently in the storage. However, the current index shown will be the index used for a specific task to <code>edit</code>, <code>delete</code>, <code>setPriority</code>, <code>mark</code>&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="link-operations"><a class="link" href="#link-operations">link Operations</a></h3>
+<div class="sect3">
+<h4 id="link-task-with-people-code-link-code"><a class="link" href="#link-task-with-people-code-link-code">link task with people: <code>link</code></a></h4>
+<div class="paragraph">
+<p>Linking a task with provided people<br>
+Format: <code>link</code>/<code>lk</code><br>
+Details: <code>link Index p/personIndex [p/personIndex]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>link 1 p/1</code><br>
+link task 1 with person 1 in the current displaying list</p>
+</li>
+<li>
+<p><code>link 1 p/1 p/2</code><br>
+link task 1 with person 1 and person 2 in the current displaying list</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="coming-in-v2-0"><a class="link" href="#coming-in-v2-0">Coming in v2.0</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="auto-focusing-on-input-bar-at-the-start-of-the-application"><a class="link" href="#auto-focusing-on-input-bar-at-the-start-of-the-application">Auto-focusing on input bar at the start of the application</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="setting-a-task-to-be-recurring"><a class="link" href="#setting-a-task-to-be-recurring">Setting a task to be recurring</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="listing-tasks-by-tag"><a class="link" href="#listing-tasks-by-tag">Listing tasks by tag</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="viewing-one-task-details-with-the-relevant-person-in-the-addressbook"><a class="link" href="#viewing-one-task-details-with-the-relevant-person-in-the-addressbook">Viewing one task details with the relevant person in the addressbook</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook"><a class="link" href="#viewing-one-person-details-with-the-relevant-tasks-displayed-in-the-addressbook">Viewing one person details with the relevant tasks displayed in the addressbook</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="listing-last-few-contacts-the-user-have-found"><a class="link" href="#listing-last-few-contacts-the-user-have-found">Listing last few contacts the user have found</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="pinning-important-contacts-or-task-on-top"><a class="link" href="#pinning-important-contacts-or-task-on-top">Pinning important contacts or task on top</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task"><a class="link" href="#remindering-region-in-task-bar-see-the-reminder-and-be-reminded-of-the-deadline-or-the-up-comings-of-this-task">Remindering region in task bar|see the reminder and be reminded of the deadline or the up comings of this task</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="suggested-possible-new-features"><a class="link" href="#suggested-possible-new-features">Suggested possible new features</a></h3>
+<div class="sect3">
+<h4 id="adding-image-to-a-contact-person"><a class="link" href="#adding-image-to-a-contact-person">Adding image to a contact person</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="sorting-persons-by-name"><a class="link" href="#sorting-persons-by-name">Sorting persons by name</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="adding-new-tasks-with-hierarchy"><a class="link" href="#adding-new-tasks-with-hierarchy">Adding new tasks with hierarchy</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="editing-hierarchy"><a class="link" href="#editing-hierarchy">Editing hierarchy</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="getting-error-and-warnings-on-event-conflicts"><a class="link" href="#getting-error-and-warnings-on-event-conflicts">Getting error and warnings on event conflicts</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="having-multiple-hot-keys-available"><a class="link" href="#having-multiple-hot-keys-available">Having multiple hot keys available</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="auto-completion-of-commands"><a class="link" href="#auto-completion-of-commands">Auto-completion of commands</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="suggesting-next-part-of-the-commands"><a class="link" href="#suggesting-next-part-of-the-commands">Suggesting next part of the commands</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="trigger-password"><a class="link" href="#trigger-password">Trigger &amp; password</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="customising-background-wallpaper"><a class="link" href="#customising-background-wallpaper">Customising background wallpaper</a></h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Add Task</strong> <code>add n/NAME d/Description s/START TIME f/END TIME [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm f/1/1/2099 15:00pm t/friends</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 3</code></p>
+</li>
+<li>
+<p><strong>Delete Task</strong> : <code>deleteTask INDEX</code><br>
+e.g. <code>deleteTask 3</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Edit Task</strong> : <code>editTask INDEX [n/NAME] [d/DESCRIPTION] [s/START_DATE_TIME] [f/END_DATE_TIME] [c/INTEGER[1~5] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>editTask 1 n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm t/friends</code></p>
+</li>
+<li>
+<p><strong>Export</strong> : <code>export INDEX</code><br>
+e.g. <code>export 3</code></p>
+</li>
+<li>
+<p><strong>Export Task</strong> : <code>exportTask INDEX</code><br>
+e.g. <code>exportTask 3</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Link</strong> : <code>link TaskIndex p/personIndex [p/personIndex]&#8230;&#8203; `<br>
+e.g. `link 1 p/2</code></p>
+</li>
+<li>
+<p><strong>List Contact</strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong>List Task</strong> : <code>listTask</code></p>
+</li>
+<li>
+<p><strong>Mark Task</strong> : <code>markTask INDEX</code><br>
+e.g. markTask 1</p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Remark</strong> : <code>remark INDEX r/[REMARK]</code><br>
+e.g. remark 1 r/Likes to swim.</p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br>
+e.g.<code>select 2</code></p>
+</li>
+<li>
+<p><strong>Select Task</strong> : <code>selectTask INDEX</code><br>
+e.g.<code>selectTask 2</code></p>
+</li>
+<li>
+<p><strong>Set Priority</strong> : <code>setPriority INDEX c/PRIORITY INDEX</code><br>
+e.g.<code>setPriority 1 c/2</code></p>
+</li>
+<li>
+<p><strong>Task By End</strong> : <code>taskByEnd</code></p>
+</li>
+<li>
+<p><strong>Task By Priority</strong> : <code>taskByPriority</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 </ul>
 </div>
@@ -218,7 +578,6 @@ Returns any task having name/description <code>picnic</code> or <code>meeting</c
 <p><mark>End of Extract</mark></p>
 </div>
 <hr>
-</div>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="ulist">
@@ -254,7 +613,6 @@ then they&#8217;ll be able to send this result line to their friends through soc
 </div>
 </li>
 </ul>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -294,7 +652,7 @@ This was later majorly implemented by my teammate <a href="https://github.com/nu
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 15:27:37 +00:00
+Last updated 2017-11-13 15:44:33 +00:00
 </div>
 </div>
 </body>

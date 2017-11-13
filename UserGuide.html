@@ -584,28 +584,23 @@ clear remark of the first person</p>
 <div class="sect2">
 <h3 id="tasks-operations"><a class="link" href="#tasks-operations">3.3. Tasks Operations</a></h3>
 <div class="sect3">
-<h4 id="selecting-a-task-code-selecttask-code"><a class="link" href="#selecting-a-task-code-selecttask-code">3.3.1. Selecting a task : <code>selectTask</code></a></h4>
+<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.1. Adding a new task : <code>addTask</code></a></h4>
 <div class="paragraph">
-<p>Selects the task identified by the index number used in the last task listing.<br>
-Format: <code>selectTask</code>/<code>st</code><br>
-Details: <code>selectTask INDEX</code></p>
+<p>Adds a new task to the task book<br>
+Format: <code>addTask</code>/<code>at</code><br>
+Details: <code>addTask n/TaskName d/Description s/startDateTime f/finishDateTime c/priority [t/TAG]&#8230;&#8203;</code><br></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the task and display the task at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing of tasks.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A task can have any number of tags (including 0), the tag mechanism is the same as that for person. A task has a special field called priority (ranges from 1 to 5, with 1 being the most important). If a priority is not specified during adding of this task, a <code>normal</code> (3) priority  wil be set by default.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -613,8 +608,7 @@ Details: <code>selectTask INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>select 2</code><br>
-Selects the 2nd task in the task book.</p>
+<p><code>addTask n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm c/3 t/friends</code></p>
 </li>
 </ul>
 </div>
@@ -622,88 +616,19 @@ Selects the 2nd task in the task book.</p>
 <div class="sect3">
 <h4 id="listing-all-tasks-code-listtask-code"><a class="link" href="#listing-all-tasks-code-listtask-code">3.3.2. Listing all tasks : <code>listTask/</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all tasks in the task book.<br>
+<p>Shows a list of all tasks in the task book,including all completed tasks, which are with green click .<br>
 Format: <code>listTask</code>/<code>lt</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-new-task-code-edittask-code"><a class="link" href="#editing-a-new-task-code-edittask-code">3.3.3. Editing a new task : <code>editTask</code></a></h4>
+<h4 id="clearing-all-tasks-code-cleartask-code"><a class="link" href="#clearing-all-tasks-code-cleartask-code">3.3.3. Clearing all tasks : <code>clearTask</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing task in the address book<br>
-Format: <code>editTask</code>/<code>edt</code><br>
-Details: <code>editTask INDEX [n/TaskName] [d/Description] [s/startDateTime] [f/finishDateTime] [t/TAG]&#8230;&#8203;</code><br></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the task at the specified <code>INDEX</code>. The index refers to the index number shown in the last task listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editTask 1 n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm t/friends</code>
-Edits the name, description, start time, finish time ad tag of the 1st task to be <code>picnic</code>, <code>have fun at Botanic Garden</code>, <code>1/1/2017 12:00pm</code>, <code>1/1/2017 15:00pm</code> and <code>friends</code> respectively.</p>
-</li>
-<li>
-<p><code>editTask 2 t/teammates</code>
-Edits the tag of the 2nd task to be <code>teammates</code> only and others remain same.</p>
-</li>
-</ul>
+<p>Clears all entries from the task book.<br>
+Format: <code>clearTask</code>/<code>ct</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code"><a class="link" href="#exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code">3.3.4. Exporting a task to a string of addTask command: <code>exportTask</code></a></h4>
-<div class="paragraph">
-<p>Export the details of the task by the index number<br>
-Format: <code>exportTask</code>/<code>ept</code><br>
-Details: <code>exportTask INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Exports the task at the specified <code>INDEX</code>, selects the task.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>export 1</code> in the default setting<br>
-Returns `addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm e/1/1/2099 15:00pm t/friends `</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="locating-tasks-by-name-code-findtask-code"><a class="link" href="#locating-tasks-by-name-code-findtask-code">3.3.5. Locating tasks by name: <code>findTask</code></a></h4>
+<h4 id="locating-tasks-by-name-code-findtask-code"><a class="link" href="#locating-tasks-by-name-code-findtask-code">3.3.4. Locating tasks by name: <code>findTask</code></a></h4>
 <div class="paragraph">
 <p>Finds tasks whose names or description  contain any of the given keywords.<br>
 Format: <code>findTask</code>/<code>ft</code><br>
@@ -743,13 +668,123 @@ Returns any task having name/description <code>picnic</code></p>
 </li>
 <li>
 <p><code>find picnic/meeting</code><br>
-Returns any task having name/description <code>picnic</code> or <code>meeting</code></p>
+Returns any task having name/description <code>picnic</code> or <code>meeting</code>
+==== Selecting a task : <code>selectTask</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Selects the task identified by the index number used in the last task listing.<br>
+Format: <code>selectTask</code>/<code>st</code><br>
+Details: <code>selectTask INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the task and display the task at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing of tasks.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select 2</code><br>
+Selects the 2nd task in the task book.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.3.6. Deleting a task : <code>deleteTask</code></a></h4>
+<h4 id="editing-a-new-task-code-edittask-code"><a class="link" href="#editing-a-new-task-code-edittask-code">3.3.5. Editing a new task : <code>editTask</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing task in the address book<br>
+Format: <code>editTask</code>/<code>edt</code><br>
+Details: <code>editTask INDEX [n/TaskName] [d/Description] [s/startDateTime] [f/finishDateTime] [t/TAG]&#8230;&#8203;</code><br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the task at the specified <code>INDEX</code>. The index refers to the index number shown in the last task listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editTask 1 n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm t/friends</code>
+Edits the name, description, start time, finish time ad tag of the 1st task to be <code>picnic</code>, <code>have fun at Botanic Garden</code>, <code>1/1/2017 12:00pm</code>, <code>1/1/2017 15:00pm</code> and <code>friends</code> respectively.</p>
+</li>
+<li>
+<p><code>editTask 2 t/teammates</code>
+Edits the tag of the 2nd task to be <code>teammates</code> only and others remain same.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code"><a class="link" href="#exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code">3.3.6. Exporting a task to a string of addTask command: <code>exportTask</code></a></h4>
+<div class="paragraph">
+<p>Export the details of the task by the index number<br>
+Format: <code>exportTask</code>/<code>ept</code><br>
+Details: <code>exportTask INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Exports the task at the specified <code>INDEX</code>, selects the task.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export 1</code> in the default setting<br>
+Returns `addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm e/1/1/2099 15:00pm t/friends `</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.3.7. Deleting a task : <code>deleteTask</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specific task from the task book.<br>
 Format: <code>deleteTask</code>/<code>dt</code><br>
@@ -788,7 +823,7 @@ Deletes the 1st task in the task book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">3.3.7. Marking a task : <code>markTask</code></a></h4>
+<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">3.3.8. Marking a task : <code>markTask</code></a></h4>
 <div class="paragraph">
 <p>Marks the specific task from the task book.<br>
 Format: <code>markTask</code>/<code>mt</code><br>
@@ -824,13 +859,6 @@ Details: <code>markTask INDEX</code></p>
 Marks the 1st task in the task book to be completed and the marked task will disappear in the result list.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="listing-all-tasks-code-listtask-code-2"><a class="link" href="#listing-all-tasks-code-listtask-code-2">3.3.8. Listing all tasks : <code>listTask</code></a></h4>
-<div class="paragraph">
-<p>Shows a list of all tasks in the task book, including all completed tasks, which are with green click .<br>
-Format: <code>listTask</code>/<code>lt</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -902,36 +930,6 @@ Format: <code>taskByEnd</code>/<code>tbe</code></p>
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.12. Adding a new task : <code>addTask</code></a></h4>
-<div class="paragraph">
-<p>Adds a new task to the task book<br>
-Format: <code>addTask</code>/<code>at</code><br>
-Details: <code>addTask n/TaskName d/Description s/startDateTime f/finishDateTime c/priority [t/TAG]&#8230;&#8203;</code><br></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A task can have any number of tags (including 0), the tag mechanism is the same as that for person. A task has a special field called priority (ranges from 1 to 5, with 1 being the most important). If a priority is not specified during adding of this task, a <code>normal</code> (3) priority  wil be set by default.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addTask n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm c/3 t/friends</code></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1151,7 +1149,7 @@ e.g.<code>setPriority 1 c/2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 15:27:37 +00:00
+Last updated 2017-11-13 15:44:33 +00:00
 </div>
 </div>
 </body>
