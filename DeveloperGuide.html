@@ -940,21 +940,21 @@ Commands that are not undoable are not added into the <code>undoStack</code>. Fo
 <p>We develop this application as a parallel of two similar application, namely addressBook and taskBook. They are similar in many ways, including comman commands like <code>add</code> for adding a person and <code>addTask</code> for adding a task.<br></p>
 </div>
 <div class="paragraph">
-<p>Adding a taskBook to our application originated from our design requirements. In product v1.0, we have updated developer guide and user guide for a set of new functionalities specially designed for tasks. Thus, we need to add a taskBook to this application.</p>
+<p>Adding a <code>taskBook</code> to our application originated from our design requirements.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The taskBook is a set of parallel functionalities apart from the addressBook.</p>
+<p>The <code>taskBook</code> is a set of parallel functionalities apart from the addressBook.</p>
 </li>
 <li>
-<p>The taskBook is related to addressbook in the sense that we can link the person and task together.</p>
+<p>The <code>taskBook</code> is related to <code>addressbook</code> in the sense that we can link the person and task together.</p>
 </li>
 <li>
-<p>taskBook and addressBook has the following independent components: <code>model</code>, <code>logic</code>, and <code>storage</code>.</p>
+<p>The <code>taskBook</code> and <code>addressBook</code> has the following independent components: <code>model</code>, <code>logic</code>, and <code>storage</code>.</p>
 </li>
 <li>
-<p>taskBook and addressBook share the same user interface by taking up taskPanel and personPanel respectively.</p>
+<p>The <code>taskBook</code> and <code>addressBook</code> share the same user interface by taking up taskPanel and personPanel respectively.</p>
 </li>
 </ul>
 </div>
@@ -1007,7 +1007,7 @@ storage = <span class="keyword">new</span> StorageManager(addressBookStorage, us
 </div>
 </div>
 <div class="paragraph">
-<p>The unit tests stub classes and setUp methods should be updated accordingly.<br></p>
+<p>The unit tests stub classes and setUp methods should be updated accordingly. In addition, in order to make task&#8217;s operations undoable and redoable, the <code>taskbook</code> states should be saved before each command&#8217;s execution.<br></p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.1. Design Considerations</a></h4>
@@ -2820,7 +2820,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 15:01:26 +00:00
+Last updated 2017-11-13 15:05:54 +00:00
 </div>
 </div>
 </body>

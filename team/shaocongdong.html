@@ -242,13 +242,13 @@ A task can have any number of tags (including 0), the tag mechanism is the same 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In this application, 3W, we have taskbook as a separate entity besides addressbook so that they will not affect each other. The taskbook will thus be able to directly built besides the original addressbook without the need to modify the modelling and storage logic of the addressbook.</p>
+<p>In this application, 3W, we have task book as a separate entity besides address book so that they will not affect each other. The task book will thus be able to directly built besides the original address book without the need to modify the modelling and storage logic of the address book.</p>
 </li>
 <li>
-<p>Because of time constraints, the current design of the DateTime of the tasks have rigid input format. They are powerful in checking start must be earlier than end, and the validity of the start and end dates and time. Currently, we focus on the validity and security. In the future, this implementation will be extended with powerful natrual language processing unit to ensure the flexibility of input as well.</p>
+<p>Because of time constraints, the current design of the <code>DateTime</code> of the tasks have rigid input format. They are powerful in checking constraints such as the start date time must be earlier than end date time, and the validity of the start and end dates and time. Currently, we focus on the validity and security. In the future, this implementation will be extended with powerful natrual language processing unit to ensure the flexibility of input as well.</p>
 </li>
 <li>
-<p>Following the addressbook functionality, the edit task function will also be able to accept various fields (at least one filed must be present). However, the priority of the task will be updated or modified through setPriority command. This modelling will ensure the user make frequent changes to the task priority easily. The task priority currently has 5 degrees with 1 being the most important. We feel 5 degrees is the most suitable one for satisfying different business people&#8217;s needs.</p>
+<p>Following the addressbook functionality, the edit task function will also be able to accept various fields (at least one filed must be present). However, the priority of the task will be updated or modified through setPriority command. This modelling will ensure the user make frequent changes to the task priority easily. The task priority currently has 5 degrees with 1 being the most important. We think 5 degrees is the most suitable one for satisfying different business people&#8217;s needs.</p>
 </li>
 </ol>
 </div>
@@ -267,21 +267,21 @@ A task can have any number of tags (including 0), the tag mechanism is the same 
 <p>We develop this application as a parallel of two similar application, namely addressBook and taskBook. They are similar in many ways, including comman commands like <code>add</code> for adding a person and <code>addTask</code> for adding a task.<br></p>
 </div>
 <div class="paragraph">
-<p>Adding a taskBook to our application originated from our design requirements. In product v1.0, we have updated developer guide and user guide for a set of new functionalities specially designed for tasks. Thus, we need to add a taskBook to this application.</p>
+<p>Adding a <code>taskBook</code> to our application originated from our design requirements.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The taskBook is a set of parallel functionalities apart from the addressBook.</p>
+<p>The <code>taskBook</code> is a set of parallel functionalities apart from the addressBook.</p>
 </li>
 <li>
-<p>The taskBook is related to addressbook in the sense that we can link the person and task together.</p>
+<p>The <code>taskBook</code> is related to <code>addressbook</code> in the sense that we can link the person and task together.</p>
 </li>
 <li>
-<p>taskBook and addressBook has the following independent components: <code>model</code>, <code>logic</code>, and <code>storage</code>.</p>
+<p>The <code>taskBook</code> and <code>addressBook</code> has the following independent components: <code>model</code>, <code>logic</code>, and <code>storage</code>.</p>
 </li>
 <li>
-<p>taskBook and addressBook share the same user interface by taking up taskPanel and personPanel respectively.</p>
+<p>The <code>taskBook</code> and <code>addressBook</code> share the same user interface by taking up taskPanel and personPanel respectively.</p>
 </li>
 </ul>
 </div>
@@ -334,7 +334,7 @@ storage = <span class="keyword">new</span> StorageManager(addressBookStorage, us
 </div>
 </div>
 <div class="paragraph">
-<p>The unit tests stub classes and setUp methods should be updated accordingly.<br></p>
+<p>The unit tests stub classes and setUp methods should be updated accordingly. In addition, in order to make task&#8217;s operations undoable and redoable, the <code>taskbook</code> states should be saved before each command&#8217;s execution.<br></p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -1047,7 +1047,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 15:01:26 +00:00
+Last updated 2017-11-13 15:05:54 +00:00
 </div>
 </div>
 </body>
