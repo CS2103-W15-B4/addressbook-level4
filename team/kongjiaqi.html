@@ -22,7 +22,7 @@
 <p>3W is a desktop address book and task book application designed for University students, business people and all those who have a busy daily schedule. The user interacts with it using a CLI, and it has a GUI created with JavaFX.</p>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/main/Qi" class="bare">https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/main/Qi</a> Kongjia.md[functional code]][<a href="https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/test/Qi" class="bare">https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/test/Qi</a> Kongjia.md[test code]]</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/main/yuzu1209.md">functional code</a>][<a href="https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/test/yuzu1209.md">test code</a>]</p>
 </div>
 <div class="sect2">
 <h3 id="enhancement-added"><a class="link" href="#enhancement-added">Enhancement Added:</a></h3>
@@ -31,28 +31,19 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/2">Initial Updates on documentation</a></p>
+<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/6">Add Backup AddressBook in Storage</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/14">Add TaskBook to our app including storage, model, and logic</a></p>
+<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/13">Update Google Map URL in Browser</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/15">Add Task Command</a></p>
+<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/24">Edit Task Command</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/19">Delete Task Command</a></p>
+<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/37">Mark Task Command</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/27">Edit Task Command Enhancement</a></p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/34">Select Task Command</a></p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/46">Task Priority Functionalities</a></p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/84">Task DateTime Object Modelling</a></p>
+<p><a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">List Task Command and Mark Icon</a></p>
 </li>
 </ol>
 </div>
@@ -62,42 +53,6 @@
 <hr>
 <div class="paragraph">
 <p><mark>Start of Extract [from: User Guide]</mark></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="selecting-a-task-code-selecttask-code"><a class="link" href="#selecting-a-task-code-selecttask-code">Selecting a task : <code>selectTask</code></a></h4>
-<div class="paragraph">
-<p>Selects the task identified by the index number used in the last task listing.<br>
-Format: <code>selectTask</code>/<code>st</code><br>
-Details: <code>selectTask INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the task and display the task at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing of tasks.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>select 2</code><br>
-Selects the 2nd task in the task book.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect3">
@@ -141,18 +96,18 @@ Edits the tag of the 2nd task to be <code>teammates</code> only and others remai
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">Deleting a task : <code>deleteTask</code></a></h4>
+<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">Marking a task : <code>markTask</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specific task from the task book.<br>
-Format: <code>deleteTask</code>/<code>dt</code><br>
-Details: <code>deleteTask IDNEX</code></p>
+<p>Marks the specific task from the task book.<br>
+Format: <code>markTask</code>/<code>mt</code><br>
+Details: <code>markTask INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the task at the specified <code>INDEX</code>.</p>
+<p>Marks the task at the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -170,107 +125,18 @@ Details: <code>deleteTask IDNEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br></p>
+<p><code>listTask</code><br></p>
 </li>
 <li>
-<p><code>deleteTask</code> 1<br>
-Deletes the 1st task in the task book.</p>
+<p><code>markTask 1</code><br>
+Marks the 1st task in the task book to be completed and the marked task will disappear in the result list.
+==== Listing all tasks : <code>listTask</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">Setting a priority for a task : <code>setPriority</code></a></h4>
 <div class="paragraph">
-<p>Sets the priority field of a task that is already present in ths taskBook with an integer value between 1 to 5.<br>
-Format: <code>setPriority</code>/<code>stp</code><br>
-Details: <code>setPriority INDEX c/new value specified</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Sets the priority value of the current task with the specific INDEX provided.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>The new value of the task&#8217;s priority should still be between 1 to 5 (inclusive).</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>setPriority 1 c/1</code><br>
-Sets the priority of this task to be <code>Super Important</code>.</p>
-</li>
-<li>
-<p><code>setPriority 1 c/6</code><br>
-A warning message is shown: A priority value is defined within integer range of 1 to 5.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
-<div class="paragraph">
-<p>Sorts the task currently present in the taskBook by priority.<br>
-Format: <code>taskByPriority</code>/<code>tbp</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This sorting will not affect the order of the tasks currently in the storage. However, the current index shown will be the index used for a specific task to <code>edit</code>, <code>delete</code>, <code>setPriority</code>, <code>mark</code>&#8230;&#8203;</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">Adding a new task : <code>addTask</code></a></h4>
-<div class="paragraph">
-<p>Adds a new task to the task book<br>
-Format: <code>addTask</code>/<code>at</code><br>
-Details: <code>addTask n/TaskName d/Description s/startDateTime f/finishDateTime c/priority [t/TAG]&#8230;&#8203;</code><br></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A task can have any number of tags (including 0), the tag mechanism is the same as that for person. A task has a special field called priority (ranges from 1 to 5, with 1 being the most important). If a priority is not specified during adding of this task, a <code>normal</code> (3) priority  wil be set by default.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addTask n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm c/3 t/friends</code></p>
-</li>
-</ul>
+<p>Shows a list of all tasks in the task book, including all completed tasks, which are with green click .<br>
+Format: <code>listTask</code>/<code>lt</code></p>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
@@ -297,645 +163,23 @@ A task can have any number of tags (including 0), the tag mechanism is the same 
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <hr>
 <div class="paragraph">
-<p><mark>Start of Extract [from: Developer Guide]</mark></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="taskbook-2"><a class="link" href="#taskbook-2">TaskBook</a></h3>
-<div class="paragraph">
-<p>We develop this application as a parallel of two similar application, namely addressBook and taskBook. They are similar in many ways, including comman commands like <code>add</code> for adding a person and <code>addTask</code> for adding a task.<br></p>
-</div>
-<div class="paragraph">
-<p>Adding a taskBook to our application originated from our design requirements. In product v1.0, we have updated developer guide and user guide for a set of new functionalities specially designed for tasks. Thus, we need to add a taskBook to this application.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The taskBook is a set of parallel functionalities apart from the addressBook.</p>
-</li>
-<li>
-<p>The taskBook is related to addressbook in the sense that we can link the person and task together.</p>
-</li>
-<li>
-<p>taskBook and addressBook has the following independent components: <code>model</code>, <code>logic</code>, and <code>storage</code>.</p>
-</li>
-<li>
-<p>taskBook and addressBook share the same user interface by taking up taskPanel and personPanel respectively.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>With the extra taskBook working in parallel, the model interface should be modified in this way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">ReadOnlyTaskBook getTaskBook();
-
-<span class="type">void</span> addTask(ReadOnlyTask task) <span class="directive">throws</span> DuplicateTaskException;
-
-<span class="type">void</span> updateFilteredTaskList(<span class="predefined-type">Predicate</span>&lt;ReadOnlyTask&gt; predicate);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>With the updated model interface, the ModelManager and ModelStub should be modified accordingly.<br></p>
-</div>
-<div class="paragraph">
-<p>For storage, we save the tasks into another storage file (xml file), the storage interface should be equipped with the following read and write methods:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">Optional&lt;ReadOnlyTaskBook&gt; readTaskBook() <span class="directive">throws</span> DataConversionException, <span class="exception">IOException</span>;
-
-<span class="annotation">@Override</span>
-<span class="type">void</span> saveTaskBook(ReadOnlyTaskBook addressBook) <span class="directive">throws</span> <span class="exception">IOException</span>;
-
-<span class="annotation">@Override</span>
-Optional&lt;ReadOnlyAddressBook&gt; readAddressBook() <span class="directive">throws</span> DataConversionException, <span class="exception">IOException</span>;
-
-<span class="annotation">@Override</span>
-<span class="type">void</span> saveAddressBook(ReadOnlyAddressBook addressBook) <span class="directive">throws</span> <span class="exception">IOException</span>;
-
-<span class="type">void</span> handleAddressBookChangedEvent(AddressBookChangedEvent abce);
-
-<span class="type">void</span> handleTaskBookChangedEvent(TaskBookChangedEvent tbce);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As given in storage and model, the main logic should be implemented this way to take both addressbook and the taskbook&#8217;s storage during initialization.<br></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">UserPrefsStorage userPrefsStorage = <span class="keyword">new</span> JsonUserPrefsStorage(config.getUserPrefsFilePath());
-userPrefs = initPrefs(userPrefsStorage);
-AddressBookStorage addressBookStorage = <span class="keyword">new</span> XmlAddressBookStorage(userPrefs.getAddressBookFilePath());
-TaskBookStorage taskBookStorage = <span class="keyword">new</span> XmlTaskBookStorage(userPrefs.getTaskBookFilePath());
-storage = <span class="keyword">new</span> StorageManager(addressBookStorage, userPrefsStorage, taskBookStorage);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The unit tests stub classes and setUp methods should be updated accordingly.<br></p>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Implementation of <code>taskBookStorage</code><br>
-<strong>Alternative 1 (current choice):</strong> Create a new xml file and several xml adapted classes for task Book storage<br>
-<strong>Pros:</strong> We will not create any dependencies between taskBook and addressBook.<br>
-<strong>Cons:</strong> A lot of code seems very similar and more storage file become hrad to manage.<br>
-<strong>Alternative 2:</strong> Save the new task to the same storage xml file as addressBook<br>
-<strong>Pros:</strong> This method of implementation saves the space and it can reuse some of the codes in addressBook.<br>
-<strong>Cons:</strong> It creates dependency between the storage for both books and it is inefficient to retrieve only one of them from storage xml file.+</p>
-</div>
-<hr>
-<div class="paragraph">
-<p><strong>Aspect</strong> Implementation of modelling and logic of <code>taskBook</code><br>
-<strong>Alternative 1 (current choice):</strong> Rewrite codes for taskBook, keep the original addressbook codes untouched.<br>
-<strong>Pros:</strong> The original addressBook logic and modelling will not be affected. We keep an independent book from the original.<br>
-<strong>Cons:</strong> The code reusage is very low and adding a taskBook become very tedious.<br>
-<strong>Alternative 2:</strong> Modify the original code base to reutiliza some of the common functionalities.<br>
-<strong>Pros:</strong> The code reusage is good and adding a taskBook becomes more efficient.<br>
-<strong>Cons:</strong> The dependency is very high between addressBook and taskBook, there is a high tendency to break original logic and modelling.<br></p>
-</div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list persons</p>
-</li>
-<li>
-<p>AddressBook shows a list of persons</p>
-</li>
-<li>
-<p>User requests to delete a specific person in the list</p>
-</li>
-<li>
-<p>AddressBook deletes the person</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-list-tasks-by-date" class="discrete">Use case: list tasks by date</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list tasks by date</p>
-</li>
-<li>
-<p>AddressBook shows a list of tasks by date</p>
-</li>
-<li>
-<p>User requests to see the tasks by date order</p>
-</li>
-<li>
-<p>AddressBook shows the tasks by date</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The task list is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. AddressBook shows an error message.</p>
-</li>
-<li>
-<p>2a2. AddressBook is empty.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-list-tasks-by-priority-order" class="discrete">Use case: list tasks by priority order</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list tasks by priority</p>
-</li>
-<li>
-<p>AddressBook shows a list of tasks by priority</p>
-</li>
-<li>
-<p>User requests to see the tasks by priority order</p>
-</li>
-<li>
-<p>AddressBook shows the tasks by priority</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The task list is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. AddressBook shows an error message.</p>
-</li>
-<li>
-<p>2a2. AddressBook is empty.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-<h3 id="use-case-list-tasks-by-tag" class="discrete">Use case: list tasks by tag</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list tasks by tag</p>
-</li>
-<li>
-<p>AddressBook shows a list of tasks by tag</p>
-</li>
-<li>
-<p>User requests to see the tasks by tag</p>
-</li>
-<li>
-<p>AddressBook shows the tasks by tag</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The task list is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. AddressBook shows an error message.</p>
-</li>
-<li>
-<p>2a2. AddressBook is empty.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-<h3 id="use-case-add-a-new-task" class="discrete">Use case: Add a new task</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to add a task</p>
-</li>
-<li>
-<p>AddressBook prompts to ask for task details</p>
-</li>
-<li>
-<p>User inputs task details</p>
-</li>
-<li>
-<p>AddressBook adds the task</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>2a. The details is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-edit-hierarchy" class="discrete">Use case: Edit hierarchy</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to edit hierarchy</p>
-</li>
-<li>
-<p>AddressBook prompts to ask for hierarchy details</p>
-</li>
-<li>
-<p>User inputs hierarchy details</p>
-</li>
-<li>
-<p>AddressBook update hierarchy</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>2a. The details is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-view-task-details" class="discrete">Use case: View task details</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list tasks</p>
-</li>
-<li>
-<p>AddressBook shows a list of persons</p>
-</li>
-<li>
-<p>User requests to see a specific task details</p>
-</li>
-<li>
-<p>AddressBook shows the details of a person</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-<h3 id="use-case-view-task-details-2" class="discrete">Use case: View task details</h3>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list tasks</p>
-</li>
-<li>
-<p>AddressBook shows a list of persons</p>
-</li>
-<li>
-<p>User requests to see a specific task details</p>
-</li>
-<li>
-<p>AddressBook shows the details of a person</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-view-task-details-3" class="discrete">Use case: View task details</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list tasks</p>
-</li>
-<li>
-<p>AddressBook shows a list of persons</p>
-</li>
-<li>
-<p>User requests to see a specific task details</p>
-</li>
-<li>
-<p>AddressBook shows the details of a person</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. AddressBook shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-invalid-actions" class="discrete">Use case: Invalid actions</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests an invalid action</p>
-</li>
-<li>
-<p>AddressBook shows a error message</p>
-</li>
-<li>
-<p>AddressBook shows suggestions on fixings of this error or warning occurred</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The error message is hard to understand</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. The user can choose to exit/restart the program</p>
-</li>
-<li>
-<p>2a2. The user can choose to redo this action</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>3a. The given suggestion is not a good fix</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. AddressBook opt to redo this action</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>{More to be added}</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix A: Non Functional Requirements</a></h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
-</li>
-<li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
-</li>
-<li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
-</li>
-<li>
-<p>Should be able to respond and update within 2s per actions</p>
-</li>
-<li>
-<p>Should give reasonable error messages and warnings</p>
-</li>
-<li>
-<p>Should try to give suggestions with valid reasons and logic</p>
-</li>
-<li>
-<p>Should have not very steep learning curve for a regular English-speaking person</p>
-</li>
-<li>
-<p>Should have detailed tutorials and documentation</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>{More to be added}</p>
-</div>
-<div class="paragraph">
 <p><mark>End of Extract</mark></p>
 </div>
 <hr>
+</div>
+</div>
 <div class="sect2">
 <h3 id="enhancement-proposed"><a class="link" href="#enhancement-proposed">Enhancement Proposed:</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add task Book (in parallel with address book)</p>
+<p>Enhancement some functions about tasks</p>
 </li>
 <li>
-<p>Task book basic Functionalities</p>
+<p>Add new icon in ui part</p>
 </li>
 <li>
-<p>DateTime of Task better checking logic</p>
+<p>Name and Description model to check the validness of input</p>
 </li>
 </ol>
 </div>
@@ -946,37 +190,34 @@ storage = <span class="keyword">new</span> StorageManager(addressBookStorage, us
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Generate JAR file for weekly milestones.</p>
+<p>Add parser test about mark task and edit task.[<a href="https://github.com/CS2103AUG2017-W15-B4/main/commit/c7ed38b7a141fe9f35cf62577dba3e6a0fb1240e">commit</a>]</p>
 </li>
 <li>
-<p>Prepare sample data and manual test script.[<a href="https://github.com/ShaocongDong/addressbook-level4/commit/beed824f7340ac812ae7c92e9831212da3f9492c">commit</a>]</p>
+<p>Update UI panel that all completed tasks can be listed[<a href="https://github.com/CS2103AUG2017-W15-B4/main/commit/a743a2e652353effeb26f43a63ceffec8201c99b">commit</a>]</p>
 </li>
 <li>
-<p>Update task model for UI integration[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/14/commits/a129504f10ea2716ab38b4620cabf35eefd71347">commit</a>]</p>
+<p>Add edit task descriptor[<a href="https://github.com/CS2103AUG2017-W15-B4/main/commit/a743a2e652353effeb26f43a63ceffec8201c99b">commit</a>]</p>
 </li>
 <li>
-<p>Design the fxml and css file for TaskBook panel and task card for our UI.</p>
+<p>Add task name in model[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">pull request</a>]</p>
 </li>
 <li>
-<p>Make link response message more friendly[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/70">pull request</a>]</p>
+<p>Add task description in model[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">pull request</a>]</p>
 </li>
 <li>
-<p>Debug for markTask][<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/44">pull request</a>]</p>
+<p>Add new image to src[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">pull request</a>]</p>
 </li>
 <li>
-<p>Update developer guide diagrams[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/80">pull request</a>]</p>
+<p>Update task list panel and command test util[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">pull request</a>]</p>
 </li>
 <li>
-<p>Make the taskBook commands undoable and redoable.[<a href="https://github.com/CS2103AUG2017-W15-B4/main/commit/701e15ecf9b15a3d4cff0b6b0f1f6858ad3e1f85">commit</a>]</p>
+<p>Add edit task test[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">pull request</a>]</p>
 </li>
 <li>
-<p>Apply Dependency Inversion Principle For Task Model[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/14/commits/20a33d4d60cfb51e0129b5ce82b9c320414c0950">commit</a>]</p>
+<p>Add EditTaskDescriptorBuilder and TaskBuilder[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/49">pull request</a>]</p>
 </li>
 <li>
-<p>Apply Defensive Programming[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/46/commits/aa3b5bd407ac32c9d0489b14223d465564218f20">commit</a>]</p>
-</li>
-<li>
-<p>Apply Abstraction design pattern[<a href="https://github.com/ShaocongDong/addressbook-level4/commit/96ff63452bd2b203cea9307f75c6c528cd041c93">commit</a>]</p>
+<p>Mark task test[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/37">pull request</a>]</p>
 </li>
 </ol>
 </div>
@@ -986,7 +227,7 @@ storage = <span class="keyword">new</span> StorageManager(addressBookStorage, us
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 08:18:48 +00:00
+Last updated 2017-11-13 09:45:50 +00:00
 </div>
 </div>
 </body>

@@ -101,46 +101,6 @@ Selects the 2nd task in the task book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-new-task-code-edittask-code"><a class="link" href="#editing-a-new-task-code-edittask-code">Editing a new task : <code>editTask</code></a></h4>
-<div class="paragraph">
-<p>Edits an existing task in the address book<br>
-Format: <code>editTask</code>/<code>edt</code><br>
-Details: <code>editTask INDEX [n/TaskName] [d/Description] [s/startDateTime] [f/finishDateTime] [t/TAG]&#8230;&#8203;</code><br></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the task at the specified <code>INDEX</code>. The index refers to the index number shown in the last task listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editTask 1 n/picnic d/have fun at Botanic Garden s/1/1/2017 12:00pm f/1/1/2017 15:00pm t/friends</code>
-Edits the name, description, start time, finish time ad tag of the 1st task to be <code>picnic</code>, <code>have fun at Botanic Garden</code>, <code>1/1/2017 12:00pm</code>, <code>1/1/2017 15:00pm</code> and <code>friends</code> respectively.</p>
-</li>
-<li>
-<p><code>editTask 2 t/teammates</code>
-Edits the tag of the 2nd task to be <code>teammates</code> only and others remain same.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
 <h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">Deleting a task : <code>deleteTask</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specific task from the task book.<br>
@@ -1062,7 +1022,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 <p>Make link response message more friendly[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/70">pull request</a>]</p>
 </li>
 <li>
-<p>Debug for markTask][<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/44">pull request</a>]</p>
+<p>Debug for markTask[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/44">pull request</a>]</p>
 </li>
 <li>
 <p>Update developer guide diagrams[<a href="https://github.com/CS2103AUG2017-W15-B4/main/pull/80">pull request</a>]</p>
@@ -1087,7 +1047,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 08:18:48 +00:00
+Last updated 2017-11-13 09:45:50 +00:00
 </div>
 </div>
 </body>

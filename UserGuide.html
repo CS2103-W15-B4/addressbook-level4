@@ -761,17 +761,24 @@ Details: <code>markTask INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br></p>
+<p><code>listTask</code><br></p>
 </li>
 <li>
 <p><code>markTask 1</code><br>
-Marks the 1st task in the task book to be completed.</p>
+Marks the 1st task in the task book to be completed and the marked task will disappear in the result list.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">3.3.6. Setting a priority for a task : <code>setPriority</code></a></h4>
+<h4 id="listing-all-tasks-code-listtask-code"><a class="link" href="#listing-all-tasks-code-listtask-code">3.3.6. Listing all tasks : <code>listTask</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all tasks in the task book, including all completed tasks, which are with green click .<br>
+Format: <code>listTask</code>/<code>lt</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">3.3.7. Setting a priority for a task : <code>setPriority</code></a></h4>
 <div class="paragraph">
 <p>Sets the priority field of a task that is already present in ths taskBook with an integer value between 1 to 5.<br>
 Format: <code>setPriority</code>/<code>stp</code><br>
@@ -814,14 +821,14 @@ A warning message is shown: A priority value is defined within integer range of 
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">3.3.7. Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
+<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">3.3.8. Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
 <div class="paragraph">
 <p>Sorts the task currently present in the taskBook by priority.<br>
 Format: <code>taskByPriority</code>/<code>tbp</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">3.3.8. Sorting tasks by end date : <code>taskbyend</code></a></h4>
+<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">3.3.9. Sorting tasks by end date : <code>taskbyend</code></a></h4>
 <div class="paragraph">
 <p>Sorts the list of tasks by their end date<br>
 Format: <code>taskByEnd</code>/<code>tbe</code></p>
@@ -842,7 +849,7 @@ Format: <code>taskByEnd</code>/<code>tbe</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.9. Adding a new task : <code>addTask</code></a></h4>
+<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.10. Adding a new task : <code>addTask</code></a></h4>
 <div class="paragraph">
 <p>Adds a new task to the task book<br>
 Format: <code>addTask</code>/<code>at</code><br>
@@ -1047,7 +1054,7 @@ e.g. `link 1 p/2</code></p>
 <p><strong>List Contact</strong> : <code>list</code></p>
 </li>
 <li>
-<p><strong>List Task</strong> : <code>list</code></p>
+<p><strong>List Task</strong> : <code>listTask</code></p>
 </li>
 <li>
 <p><strong>Mark Task</strong> : <code>markTask INDEX</code><br>
@@ -1088,7 +1095,7 @@ e.g.<code>setPriority 1 c/2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 08:18:48 +00:00
+Last updated 2017-11-13 09:45:50 +00:00
 </div>
 </div>
 </body>
