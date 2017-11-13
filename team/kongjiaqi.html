@@ -148,13 +148,16 @@ Format: <code>listTask</code>/<code>lt</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In this application, 3W, we have taskbook as a separate entity besides addressbook so that they will not affect each other. The taskbook will thus be able to directly built besides the original addressbook without the need to modify the modelling and storage logic of the addressbook.</p>
+<p>Add the google map in the 3W application by update the URL in the browser panel, and later other member enhanced it by adding route in the google map. In the future enhancement, we will try to modify it without using mouse</p>
 </li>
 <li>
-<p>Because of time constraints, the current design of the DateTime of the tasks have rigid input format. They are powerful in checking start must be earlier than end, and the validity of the start and end dates and time. Currently, we focus on the validity and security. In the future, this implementation will be extended with powerful natrual language processing unit to ensure the flexibility of input as well.</p>
+<p>Edit task allows edit only one field</p>
 </li>
 <li>
-<p>Following the addressbook functionality, the edit task function will also be able to accept various fields (at least one filed must be present). However, the priority of the task will be updated or modified through setPriority command. This modelling will ensure the user make frequent changes to the task priority easily. The task priority currently has 5 degrees with 1 being the most important. We feel 5 degrees is the most suitable one for satisfying different business people&#8217;s needs.</p>
+<p>Mark task is to mark the tasks that are already completed and will disappear in the result list when be marked</p>
+</li>
+<li>
+<p>List task show all the tasks, including the marked task. Completed tasks appear as the original order with a green click icon, which shows it is already completed</p>
 </li>
 </ol>
 </div>
@@ -227,7 +230,7 @@ Format: <code>listTask</code>/<code>lt</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 13:35:29 +00:00
+Last updated 2017-11-13 13:47:39 +00:00
 </div>
 </div>
 </body>
