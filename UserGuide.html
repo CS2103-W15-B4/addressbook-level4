@@ -373,7 +373,7 @@ Format: <code>clear</code>/<code>c</code></p>
 <div class="sect3">
 <h4 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.2.4. Locating persons by name: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
+<p>Finds persons whose names, email or address contain any of the given keywords.<br>
 Format: <code>find</code>/<code>f</code><br>
 Details: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
@@ -703,7 +703,53 @@ Returns `addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm e/1/1/
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.3.5. Deleting a task : <code>deleteTask</code></a></h4>
+<h4 id="locating-tasks-by-name-code-findtask-code"><a class="link" href="#locating-tasks-by-name-code-findtask-code">3.3.5. Locating tasks by name: <code>findTask</code></a></h4>
+<div class="paragraph">
+<p>Finds tasks whose names or description  contain any of the given keywords.<br>
+Format: <code>findTask</code>/<code>ft</code><br>
+Details: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>Picnic</code> will match <code>picnic</code></p>
+</li>
+<li>
+<p>The order of the keywords matters. e.g. <code>final exam</code> will not match <code>exam final</code></p>
+</li>
+<li>
+<p>Only the name/description are searched.</p>
+</li>
+<li>
+<p>Full words are not need for matching e.g. <code>meet</code> will match <code>meeting</code></p>
+</li>
+<li>
+<p>Tasks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>final/meet</code> will return <code>CS2103 final</code>, <code>CS2101 meeting</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find picnic</code><br>
+Returns any task having name/description <code>picnic</code></p>
+</li>
+<li>
+<p><code>find picnic/meeting</code><br>
+Returns any task having name/description <code>picnic</code> or <code>meeting</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.3.6. Deleting a task : <code>deleteTask</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specific task from the task book.<br>
 Format: <code>deleteTask</code>/<code>dt</code><br>
@@ -742,7 +788,7 @@ Deletes the 1st task in the task book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">3.3.6. Marking a task : <code>markTask</code></a></h4>
+<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">3.3.7. Marking a task : <code>markTask</code></a></h4>
 <div class="paragraph">
 <p>Marks the specific task from the task book.<br>
 Format: <code>markTask</code>/<code>mt</code><br>
@@ -781,14 +827,14 @@ Marks the 1st task in the task book to be completed and the marked task will dis
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-tasks-code-listtask-code-2"><a class="link" href="#listing-all-tasks-code-listtask-code-2">3.3.7. Listing all tasks : <code>listTask</code></a></h4>
+<h4 id="listing-all-tasks-code-listtask-code-2"><a class="link" href="#listing-all-tasks-code-listtask-code-2">3.3.8. Listing all tasks : <code>listTask</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all tasks in the task book, including all completed tasks, which are with green click .<br>
 Format: <code>listTask</code>/<code>lt</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">3.3.8. Setting a priority for a task : <code>setPriority</code></a></h4>
+<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">3.3.9. Setting a priority for a task : <code>setPriority</code></a></h4>
 <div class="paragraph">
 <p>Sets the priority field of a task that is already present in ths taskBook with an integer value between 1 to 5.<br>
 Format: <code>setPriority</code>/<code>stp</code><br>
@@ -831,14 +877,14 @@ A warning message is shown: A priority value is defined within integer range of 
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">3.3.9. Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
+<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">3.3.10. Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
 <div class="paragraph">
 <p>Sorts the task currently present in the taskBook by priority.<br>
 Format: <code>taskByPriority</code>/<code>tbp</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">3.3.10. Sorting tasks by end date : <code>taskbyend</code></a></h4>
+<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">3.3.11. Sorting tasks by end date : <code>taskbyend</code></a></h4>
 <div class="paragraph">
 <p>Sorts the list of tasks by their end date<br>
 Format: <code>taskByEnd</code>/<code>tbe</code></p>
@@ -859,7 +905,7 @@ Format: <code>taskByEnd</code>/<code>tbe</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.11. Adding a new task : <code>addTask</code></a></h4>
+<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.12. Adding a new task : <code>addTask</code></a></h4>
 <div class="paragraph">
 <p>Adds a new task to the task book<br>
 Format: <code>addTask</code>/<code>at</code><br>
@@ -1105,7 +1151,7 @@ e.g.<code>setPriority 1 c/2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 15:05:54 +00:00
+Last updated 2017-11-13 15:27:37 +00:00
 </div>
 </div>
 </body>
