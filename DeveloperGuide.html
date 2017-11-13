@@ -50,6 +50,7 @@
 <li><a href="#taskbook">4.3. TaskBook</a></li>
 <li><a href="#configuration">4.4. Configuration</a></li>
 <li><a href="#route-planner-mechanism">4.5. Route Planner mechanism</a></li>
+<li><a href="#link-task-to-people">4.6. link task to people</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -93,11 +94,18 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>3W stands for "Who, What &amp; Where". It is an application for University students, business people and all those who have a busy daily schedule.
-3W stores information about your contact, your tasks, and build linkage between them for cross references.
+<p>3W stands for "Who, What &amp; Where". It is a desktop application for University students, business people and all those who have a busy daily schedule.
+3W stores information about your contact, your tasks, and easily links different contacts and tasks for cross references.
 3W supports map show for contact address and task venue with a Google map window.
-3W bases on command line to interact.
-Live neat with 3W.</p>
+3W is based on command line to interact.
+Life can be easier with 3W.</p>
+</div>
+<div class="paragraph">
+<p>This document is the developer guide for this application. In this document, you will learn how to set up the project and the developing environment.
+Following that, you can see the overall design of the application and the design and implementation of each component. The specific instructions and methods to do documentation and testing are also contained in this document.
+In addition, from the appendices, you will see the current user stories, use cases, functional and non-functional requirements, and some special glossaries defined for this document.
+We have a small product survey section for comparison between this application and other similar products.
+Please feel free to contribute to 3W by submitting your pull request to us!</p>
 </div>
 </div>
 </div>
@@ -106,6 +114,9 @@ Live neat with 3W.</p>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
+<div class="paragraph">
+<p>As a developer, if you want to contribute to this open source project, you must do the following to set up the developing environment before getting started.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -134,8 +145,8 @@ This app is not compatible with earlier versions of Java 8.
 </td>
 <td class="content">
 IntelliJ by default has Gradle and JavaFx plugins installed.<br>
-Please install them if they are disabled.<br>
-Checking plug-ins by going to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code>.
+Please enable them if they are disabled.<br>
+Checking plug-ins states by going to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code>.
 </td>
 </tr>
 </table>
@@ -146,6 +157,9 @@ Checking plug-ins by going to <code>File</code> &gt; <code>Settings</code> &gt; 
 </div>
 <div class="sect2">
 <h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></h3>
+<div class="paragraph">
+<p>After getting JDK and the IntelliJ IDE, you can set up the project by following the steps as follows:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -201,6 +215,9 @@ This will generate all resources required by the application and tests.</p>
 </div>
 <div class="sect2">
 <h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the setup</a></h3>
+<div class="paragraph">
+<p>After finishing the above steps, you can verify your project environment and setups by:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -217,13 +234,16 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </li>
 <li>
-<p><a href="#testing">Run the tests</a> to ensure they all pass.</p>
+<p><a href="#testing">Run the tests</a> to ensure that they all pass.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
 <h3 id="configuring-the-application"><a class="link" href="#configuring-the-application">2.4. Configuring the application</a></h3>
+<div class="paragraph">
+<p>If you wish, you can configure the application with style checker and continous integration using Travis and/or AppVeyor.</p>
+</div>
 <div class="sect3">
 <h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
@@ -259,17 +279,11 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level4</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>se-edu/addressbook-level4</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
+<p>After forking the repo, links in the documentation will still point to the <code>CS2103AUG2017-W15-B4/main</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>CS2103AUG2017-W15-B4/main</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">2.4.3. Setting up CI</a></h4>
-<div class="paragraph">
-<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
-</div>
-<div class="paragraph">
-<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -281,6 +295,12 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>You can set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set up AppVeyor as a second CI, and the steps can be found at <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -305,10 +325,13 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect1">
 <h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>If you want to have a better understanding of the overall design and the specifications of the implementation of this application, this section can help get your started.</p>
+</div>
 <div class="sect2">
 <h3 id="architecture"><a class="link" href="#architecture">3.1. Architecture</a></h3>
 <div class="paragraph">
-<p>This <strong><em>Architecture Diagram</em></strong> given below explains the high-level design of the App.</p>
+<p>This <strong><em>Architecture Diagram</em></strong> given below shows the high-level design of the App.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -336,10 +359,10 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+<p>At app launch: Initializing the components in the correct sequence, and connects them up with each other.</p>
 </li>
 <li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+<p>At shut down: Shutting down the components and invokes cleanup method where necessary.</p>
 </li>
 </ul>
 </div>
@@ -362,7 +385,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#ui-component"><strong><code>UI</code></strong></a> : The UI of the App.</p>
+<p><a href="#ui-component"><strong><code>UI</code></strong></a> : The User Interface of the App.</p>
 </li>
 <li>
 <p><a href="#logic-component"><strong><code>Logic</code></strong></a> : The command executor.</p>
@@ -389,7 +412,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class. The class diagram of the logic component is shown here for your reference.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -418,7 +441,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+You can see from the diagram how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -452,6 +475,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="ui-component"><a class="link" href="#ui-component">3.2. UI component</a></h3>
+<div class="paragraph">
+<p>The user interface has a structure that can be demonstrated in the following figure.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
@@ -488,6 +514,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="logic-component"><a class="link" href="#logic-component">3.3. Logic component</a></h3>
+<div class="paragraph">
+<p>The following figure shows how the logic component is structured.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
@@ -538,6 +567,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="model-component"><a class="link" href="#model-component">3.4. Model component</a></h3>
+<div class="paragraph">
+<p>The model component has the following structure.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
@@ -571,6 +603,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="storage-component"><a class="link" href="#storage-component">3.5. Storage component</a></h3>
+<div class="paragraph">
+<p>The storage component interacts with the main application and the hard disk storage file. Its structure is shown below.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
@@ -593,13 +628,16 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <li>
 <p>can save the Address Book data in xml format and read it back.</p>
 </li>
+<li>
+<p>can save the Task Book data in xml format and read it back.</p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="common-classes"><a class="link" href="#common-classes">3.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Some classes are used by multiple components. They are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -1015,6 +1053,20 @@ Thus only the lite version is available. Also, location cannot be retrieved.<br>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="link-task-to-people"><a class="link" href="#link-task-to-people">4.6. link task to people</a></h3>
+<div class="paragraph">
+<p><strong>Aspect</strong>: Implementation of <code>link</code><br>
+<strong>Alternative 1 (current choice):</strong> add indexes to each person and task, store linking people&#8217;s index in task.<br>
+<strong>Pros:</strong> don&#8217;t need additional overhead.<br>
+<strong>Cons:</strong> linking and searching linked items are inefficient.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2 :</strong> store the data in relational database, link is a join table.<br>
+<strong>Pros:</strong> more efficient to do linking and searching linked items.<br>
+<strong>Cons:</strong> need users have relational database installed.<br></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1218,7 +1270,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect2">
 <h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
 <div class="paragraph">
-<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
+<p>You can see <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1263,7 +1315,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <h2 id="suggested-programming-tasks-to-get-started"><a class="link" href="#suggested-programming-tasks-to-get-started">Appendix A: Suggested Programming Tasks to Get Started</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Suggested path for new programmers:</p>
+<p>Here is a suggested path for new programmers:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2687,7 +2739,6 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div id="Invalid-action" class="paragraph">
-<div class="title">/gradlew clean</div>
 <p>Invalid-action</p>
 </div>
 <div class="literalblock">
@@ -2712,7 +2763,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The value correspondence: 1 (super important), 2 (important), 3 (normal), 4 (trivial), and 5 (super trivial).</p>
+<p>The correspondence between interger value and the priority of the tasks is as follows: 1 (super important), 2 (important), 3 (normal), 4 (trivial), and 5 (super trivial).</p>
 </div>
 </td>
 </tr>
@@ -2735,19 +2786,19 @@ Eg.: Dangerous events, delete and clashing events</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Beautiful interfaces</p>
+<p>Beautiful interfaces.</p>
 </li>
 <li>
-<p>Notes easy to remove, add, edit and move</p>
+<p>Notes which are easy to be removed, added, edited and moved.</p>
 </li>
 <li>
-<p>Have attachments and update history for an event</p>
+<p>Attachments and update history for an event.</p>
 </li>
 <li>
-<p>Able to sync with different device for same account</p>
+<p>Sync with different device for same account.</p>
 </li>
 <li>
-<p>Have a lot of power ups to choose including github</p>
+<p>Power ups to choose including github and Slack.</p>
 </li>
 </ul>
 </div>
@@ -2757,7 +2808,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Not command line software, so not very friendly for developers and command line lovers</p>
+<p>It&#8217;s not a command line software, and therefore not very friendly for developers and command line lovers</p>
 </li>
 <li>
 <p>Unable to work offline and often clash with not so stable Internet connections</p>
@@ -2769,7 +2820,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-27 09:08:09 +00:00
+Last updated 2017-11-13 08:18:48 +00:00
 </div>
 </div>
 </body>
