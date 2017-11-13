@@ -144,16 +144,19 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book</p>
 </li>
 <li>
-<p><strong><code>addTask</code></strong>`n/picnic d/have fun at Botanic Garden s/6/12/2017 12:00pm f/6/12/2017 15:00pm t/social</p>
+<p><strong><code>addTask</code></strong><code>n/picnic d/have fun at Botanic Garden s/6/12/2017 12:00pm f/6/12/2017 15:00pm t/social</code> : adds a task named <code>picnic</code> to the Task Book</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current contact list</p>
 </li>
 <li>
-<p><strong>*<code>undo</code></strong> : recover the contact deleted in the previous deletion</p>
+<p><strong><code>markTask</code></strong><code>2</code> : marks the 2nd task shown in the current task list and the marked task will disappear in task list</p>
+</li>
+<li>
+<p><strong><code>undo</code></strong> : recover the contact deleted in the previous deletion</p>
 </li>
 <li>
 <p><strong><code>deleteTask</code></strong><code>1</code> : deletes the 1st contact shown in the current task list</p>
@@ -304,21 +307,14 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.1.5. Clearing all entries : <code>clear</code></a></h4>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code>/<code>c</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.6. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.5. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code>/<code>x</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="saving-the-data"><a class="link" href="#saving-the-data">3.1.7. Saving the data</a></h4>
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">3.1.6. Saving the data</a></h4>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -368,7 +364,14 @@ Format: <code>list</code>/<code>l</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.2.3. Locating persons by name: <code>find</code></a></h4>
+<h4 id="clearing-all-persons-code-clear-code"><a class="link" href="#clearing-all-persons-code-clear-code">3.2.3. Clearing all persons : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Clears all entries from the address book.<br>
+Format: <code>clear</code>/<code>c</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.2.4. Locating persons by name: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>find</code>/<code>f</code><br>
@@ -414,7 +417,7 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.2.4. Selecting a person : <code>select</code></a></h4>
+<h4 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.2.5. Selecting a person : <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select</code>/<code>s</code><br>
@@ -456,7 +459,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.2.5. Editing a person : <code>edit</code></a></h4>
+<h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.2.6. Editing a person : <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
 Format: <code>edit</code>/<code>ed</code><br>
@@ -502,7 +505,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect3">
-<h4 id="exporting-a-person-to-a-string-of-add-command-code-export-code"><a class="link" href="#exporting-a-person-to-a-string-of-add-command-code-export-code">3.2.6. Exporting a person to a string of add command : <code>export</code></a></h4>
+<h4 id="exporting-a-person-to-a-string-of-add-command-code-export-code"><a class="link" href="#exporting-a-person-to-a-string-of-add-command-code-export-code">3.2.7. Exporting a person to a string of add command : <code>export</code></a></h4>
 <div class="paragraph">
 <p>Export the details of the person by the index number<br>
 Format: <code>export</code>/<code>ex</code>
@@ -538,7 +541,7 @@ Returns <code>add n/Alex Yeoh p/87438807 e/alexyeoh@example.com a/Blk 30 Geylang
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-updating-remark-of-a-person-code-remark-code"><a class="link" href="#adding-updating-remark-of-a-person-code-remark-code">3.2.7. Adding/Updating remark of a person : <code>remark</code></a></h4>
+<h4 id="adding-updating-remark-of-a-person-code-remark-code"><a class="link" href="#adding-updating-remark-of-a-person-code-remark-code">3.2.8. Adding/Updating remark of a person : <code>remark</code></a></h4>
 <div class="paragraph">
 <p>Adds a new remark or updates existing remark of a person<br>
 Format: <code>remark</code>/<code>r</code>
@@ -617,7 +620,14 @@ Selects the 2nd task in the task book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-new-task-code-edittask-code"><a class="link" href="#editing-a-new-task-code-edittask-code">3.3.2. Editing a new task : <code>editTask</code></a></h4>
+<h4 id="listing-all-tasks-code-listtask-code"><a class="link" href="#listing-all-tasks-code-listtask-code">3.3.2. Listing all tasks : <code>listTask/</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all tasks in the task book.<br>
+Format: <code>listTask</code>/<code>lt</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-new-task-code-edittask-code"><a class="link" href="#editing-a-new-task-code-edittask-code">3.3.3. Editing a new task : <code>editTask</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing task in the address book<br>
 Format: <code>editTask</code>/<code>edt</code><br>
@@ -657,7 +667,7 @@ Edits the tag of the 2nd task to be <code>teammates</code> only and others remai
 </div>
 </div>
 <div class="sect3">
-<h4 id="exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code"><a class="link" href="#exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code">3.3.3. Exporting a task to a string of addTask command: <code>exportTask</code></a></h4>
+<h4 id="exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code"><a class="link" href="#exporting-a-task-to-a-string-of-addtask-command-code-exporttask-code">3.3.4. Exporting a task to a string of addTask command: <code>exportTask</code></a></h4>
 <div class="paragraph">
 <p>Export the details of the task by the index number<br>
 Format: <code>exportTask</code>/<code>ept</code><br>
@@ -693,7 +703,7 @@ Returns `addTask n/picnic d/have fun at Botanic Garden s/1/1/2099 12:00pm e/1/1/
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.3.4. Deleting a task : <code>deleteTask</code></a></h4>
+<h4 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">3.3.5. Deleting a task : <code>deleteTask</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specific task from the task book.<br>
 Format: <code>deleteTask</code>/<code>dt</code><br>
@@ -732,7 +742,7 @@ Deletes the 1st task in the task book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">3.3.5. Marking a task : <code>markTask</code></a></h4>
+<h4 id="marking-a-task-code-marktask-code"><a class="link" href="#marking-a-task-code-marktask-code">3.3.6. Marking a task : <code>markTask</code></a></h4>
 <div class="paragraph">
 <p>Marks the specific task from the task book.<br>
 Format: <code>markTask</code>/<code>mt</code><br>
@@ -771,14 +781,14 @@ Marks the 1st task in the task book to be completed and the marked task will dis
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-tasks-code-listtask-code"><a class="link" href="#listing-all-tasks-code-listtask-code">3.3.6. Listing all tasks : <code>listTask</code></a></h4>
+<h4 id="listing-all-tasks-code-listtask-code-2"><a class="link" href="#listing-all-tasks-code-listtask-code-2">3.3.7. Listing all tasks : <code>listTask</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all tasks in the task book, including all completed tasks, which are with green click .<br>
 Format: <code>listTask</code>/<code>lt</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">3.3.7. Setting a priority for a task : <code>setPriority</code></a></h4>
+<h4 id="setting-a-priority-for-a-task-code-setpriority-code"><a class="link" href="#setting-a-priority-for-a-task-code-setpriority-code">3.3.8. Setting a priority for a task : <code>setPriority</code></a></h4>
 <div class="paragraph">
 <p>Sets the priority field of a task that is already present in ths taskBook with an integer value between 1 to 5.<br>
 Format: <code>setPriority</code>/<code>stp</code><br>
@@ -821,14 +831,14 @@ A warning message is shown: A priority value is defined within integer range of 
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">3.3.8. Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
+<h4 id="sorting-tasks-by-their-priority-code-taskbypriority-code"><a class="link" href="#sorting-tasks-by-their-priority-code-taskbypriority-code">3.3.9. Sorting tasks by their priority : <code>taskByPriority</code></a></h4>
 <div class="paragraph">
 <p>Sorts the task currently present in the taskBook by priority.<br>
 Format: <code>taskByPriority</code>/<code>tbp</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">3.3.9. Sorting tasks by end date : <code>taskbyend</code></a></h4>
+<h4 id="sorting-tasks-by-end-date-code-taskbyend-code"><a class="link" href="#sorting-tasks-by-end-date-code-taskbyend-code">3.3.10. Sorting tasks by end date : <code>taskbyend</code></a></h4>
 <div class="paragraph">
 <p>Sorts the list of tasks by their end date<br>
 Format: <code>taskByEnd</code>/<code>tbe</code></p>
@@ -849,7 +859,7 @@ Format: <code>taskByEnd</code>/<code>tbe</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.10. Adding a new task : <code>addTask</code></a></h4>
+<h4 id="adding-a-new-task-code-addtask-code"><a class="link" href="#adding-a-new-task-code-addtask-code">3.3.11. Adding a new task : <code>addTask</code></a></h4>
 <div class="paragraph">
 <p>Adds a new task to the task book<br>
 Format: <code>addTask</code>/<code>at</code><br>
@@ -1095,7 +1105,7 @@ e.g.<code>setPriority 1 c/2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 13:47:39 +00:00
+Last updated 2017-11-13 15:01:26 +00:00
 </div>
 </div>
 </body>
