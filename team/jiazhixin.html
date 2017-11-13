@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Jia Zhixin - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Jia Zhixin - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-3w"><a class="link" href="#project-3w">Project: 3W</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>3W which represents Who, What &amp; Where, is a desktop address book and task book application designed for University students, business people and all those who have a busy daily schedule. The user can interact with it using a CLI, and it has a GUI created with JavaFX.
+Users can enjoy a well-organized life with our 3W.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/main/nusjzx.md">functional code</a>][<a href="https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/test/nusjzx.md">test code</a>]</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-add-remark-command"><a class="link" href="#enhancement-added-add-remark-command">Enhancement Added: Add Remark Command</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+<div class="paragraph">
+<p>Adds a new remark or updates existing remark of a person<br>
+Format: <code>remark</code>/<code>r</code>
+Details: <code>remark 1 r/[remark]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>if new remark is not provided, it will clear the remark.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>remark 1 r/likes to swim `<br>
+adds or updates remark of the first person to be `likes to swim</code></p>
+</li>
+<li>
+<p><code>remark 1</code><br>
+clear remark of the first person</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-add-google-map-in-the-browser-panel-including-the-route-planning"><a class="link" href="#enhancement-added-add-google-map-in-the-browser-panel-including-the-route-planning">Enhancement Added: Add Google Map in the browser panel, including the Route planning</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+<div class="paragraph">
+<p>Selects the person identified by the index number used in the last person listing.<br>
+Format: <code>select</code>/<code>s</code><br>
+Details: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the person and loads the Google Map page the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing of persons.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the 2nd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+Selects the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+<div class="paragraph">
+<p>The Route planner uses the embedded webview component of JavaFX.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Google Map version<br>
+<strong>Problem:</strong> We don&#8217;t use the full version of Google Map. That is because the embedded browser doesn&#8217;t support the requirement for running full version.
+Thus only the lite version is available. Also, location cannot be retrieved.<br>
+<strong>solution:</strong> We directly use the google map direction url, and fill in the ending point by the address. User can simply enter his current location.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-add-link-command"><a class="link" href="#enhancement-added-add-link-command">Enhancement Added: Add Link Command</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="link-task-with-people-code-link-code"><a class="link" href="#link-task-with-people-code-link-code">link task with people: <code>link</code></a></h4>
+<div class="paragraph">
+<p>Linking a task with provided people<br>
+Format: <code>link</code>/<code>lk</code><br>
+Details: <code>link Index p/personIndex [p/personIndex]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>link 1 p/1</code><br>
+link task 1 with person 1 in the current displayed list</p>
+</li>
+<li>
+<p><code>link 1 p/1 p/2</code><br>
+link task 1 with person 1 and person 2 in the current displayed list</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect</strong>: Implementation of <code>link</code><br>
+<strong>Alternative 1 (current choice):</strong> add indices to each person and task, store linking people&#8217;s indices in task.<br>
+<strong>Pros:</strong> don&#8217;t need additional overhead.<br>
+<strong>Cons:</strong> linking and searching linked items are inefficient.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2 :</strong> store the data in relational database, link is a join table.<br>
+<strong>Pros:</strong> more efficient to do linking and searching linked items.<br>
+<strong>Cons:</strong> need users have relational database installed.<br></p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-add-linkedtasks-and-linkedpersons-command"><a class="link" href="#enhancement-added-add-linkedtasks-and-linkedpersons-command">Enhancement Added: Add linkedTasks and linkedPersons Command</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+<div class="paragraph">
+<p>Showing Linked tasks of provided person<br>
+Format: <code>linkedTasks</code>/<code>lts</code><br>
+Details: `linkedTasks Index `</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>linkedTasks 1</code><br>
+show linked tasks of person 1 in the current displayed list</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="linked-tasks-of-person-code-linkedpersons-code"><a class="link" href="#linked-tasks-of-person-code-linkedpersons-code">linked tasks of person: <code>linkedPersons</code></a></h4>
+<div class="paragraph">
+<p>Showing Linked persons of provided task<br>
+Format: <code>linkedPersons</code>/<code>lps</code><br>
+Details: `linkedPersons Index `</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>linkedPersons 1</code><br>
+show linked persons of task 1 in the current displayed list</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Managing weekly group milestone</p>
+</li>
+<li>
+<p>Making release for each version of the application</p>
+</li>
+<li>
+<p>Changing language of developer guide to be more friendly</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-13 15:51:05 +00:00
+</div>
+</div>
+</body>
+</html>

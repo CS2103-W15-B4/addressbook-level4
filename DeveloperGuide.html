@@ -1041,13 +1041,13 @@ storage = <span class="keyword">new</span> StorageManager(addressBookStorage, us
 <div class="sect2">
 <h3 id="route-planner-mechanism"><a class="link" href="#route-planner-mechanism">4.5. Route Planner mechanism</a></h3>
 <div class="paragraph">
-<p>The Route planner is done using the embedded webview component of JavaFX.</p>
+<p>The Route planner uses the embedded webview component of JavaFX.</p>
 </div>
 <div class="sect3">
 <h4 id="design-consideration"><a class="link" href="#design-consideration">4.5.1. Design Consideration</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Google Map version<br>
-<strong>Problem:</strong> We are not using the full version of Google Map. That is because the embedded browser doesn&#8217;t support the requirement for running full version.
+<strong>Problem:</strong> We don&#8217;t use the full version of Google Map. That is because the embedded browser doesn&#8217;t support the requirement for running full version.
 Thus only the lite version is available. Also, location cannot be retrieved.<br>
 <strong>solution:</strong> We directly use the google map direction url, and fill in the ending point by the address. User can simply enter his current location.</p>
 </div>
@@ -1057,7 +1057,7 @@ Thus only the lite version is available. Also, location cannot be retrieved.<br>
 <h3 id="link-task-to-people"><a class="link" href="#link-task-to-people">4.6. link task to people</a></h3>
 <div class="paragraph">
 <p><strong>Aspect</strong>: Implementation of <code>link</code><br>
-<strong>Alternative 1 (current choice):</strong> add indexes to each person and task, store linking people&#8217;s index in task.<br>
+<strong>Alternative 1 (current choice):</strong> add indices to each person and task, store linking people&#8217;s indices in task.<br>
 <strong>Pros:</strong> don&#8217;t need additional overhead.<br>
 <strong>Cons:</strong> linking and searching linked items are inefficient.<br></p>
 </div>
@@ -2820,7 +2820,7 @@ Eg.: Dangerous events, delete and clashing events</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 15:44:33 +00:00
+Last updated 2017-11-13 15:51:05 +00:00
 </div>
 </div>
 </body>
