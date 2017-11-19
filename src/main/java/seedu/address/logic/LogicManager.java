@@ -58,11 +58,13 @@ public class LogicManager extends ComponentManager implements Logic {
         return model.getFilteredTaskList();
     }
 
+    //@@author nusjzx
     @Override
     public SortedList<ReadOnlyTask> getSortedTaskList() {
         return model.getSortedTaskList();
     }
 
+    //@@author
     @Override
     public ListElementPointer getHistorySnapshot() {
         return new ListElementPointer(history.getHistory());

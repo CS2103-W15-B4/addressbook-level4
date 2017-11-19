@@ -31,10 +31,12 @@ public interface ReadOnlyTask {
     Set<Tag> getTags();
     ObjectProperty<Boolean> completeProperty();
     Boolean getComplete();
+    //@@author nusjzx
     ObjectProperty<Integer> idProperty();
     Integer getId();
     ObjectProperty<ArrayList<Integer>> peopleIdsProperty();
     ArrayList<Integer> getPeopleIds();
+    //@@author
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)

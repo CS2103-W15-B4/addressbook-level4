@@ -22,7 +22,8 @@ public class LinkedTasksCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, LinkedTasksCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                LinkedTasksCommand.MESSAGE_USAGE));
     }
 }
 ```
@@ -103,7 +104,7 @@ public class LinkCommandParserTest {
 ``` java
 package seedu.address.logic.commands;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstTaskOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -141,11 +142,11 @@ public class LinkedTasksCommandTest {
     @Test
     public void executeLinkedPersonsSuccessful() {
 
-        ReadOnlyTask firstTask= model.getTaskBook().getTaskList().get(0);
+        ReadOnlyTask firstTask = model.getTaskBook().getTaskList().get(0);
         ArrayList<Integer> firstId = new ArrayList<>();
         ReadOnlyPerson firstPerson = model.getAddressBook().getPersonList().get(0);
         firstId.add(firstPerson.getId());
-        Task linkedTask= new Task(firstTask);
+        Task linkedTask = new Task(firstTask);
         linkedTask.setPeopleIds(firstId);
         try {
             model.updateTask(firstTask, linkedTask);
@@ -207,18 +208,18 @@ public class TaskByEndCommandTest {
             assert false : "There are duplicate tasks in this Taskbook";
         }
 
-        TaskBook sorted_tb = new TaskBook();
+        TaskBook sortedTb = new TaskBook();
 
         try {
-            sorted_tb.addTask(firstTask);
-            sorted_tb.addTask(secondTask);
-            sorted_tb.addTask(thirdTask);
+            sortedTb.addTask(firstTask);
+            sortedTb.addTask(secondTask);
+            sortedTb.addTask(thirdTask);
         } catch (DuplicateTaskException e) {
             assert false : "There are duplicate tasks in this Taskbook";
         }
 
         model = new ModelManager(getTypicalAddressBook(), tb, new UserPrefs());
-        expectedModel = new ModelManager(getTypicalAddressBook(), sorted_tb, new UserPrefs());
+        expectedModel = new ModelManager(getTypicalAddressBook(), sortedTb, new UserPrefs());
         taskByEndCommand = new TaskByEndCommand();
         taskByEndCommand.setData(model, null, null);
     }
@@ -272,10 +273,10 @@ public class LinkedPersonsCommandTest {
     @Test
     public void executeLinkedPersonsSuccessful() {
 
-        ReadOnlyTask firstTask= model.getTaskBook().getTaskList().get(0);
+        ReadOnlyTask firstTask = model.getTaskBook().getTaskList().get(0);
         ArrayList<Integer> firstId = new ArrayList<>();
         firstId.add(model.getAddressBook().getPersonList().get(0).getId());
-        Task linkedTask= new Task(firstTask);
+        Task linkedTask = new Task(firstTask);
         linkedTask.setPeopleIds(firstId);
         try {
             model.updateTask(firstTask, linkedTask);
@@ -368,8 +369,7 @@ public class LinkCommandTest {
         try {
             CommandResult commandResult = linkCommand.execute();
             assertEquals(String.format(linkCommand.MESSAGE_LINK_SUCCESS,
-                    getTypicalTaskbook().getTaskList().get(indexInteger).getName()) +
-                    personNameList,
+                    getTypicalTaskbook().getTaskList().get(indexInteger).getName()) + personNameList,
                     commandResult.feedbackToUser);
         } catch (CommandException ce) {
             throw new IllegalArgumentException("Execution of command should not fail.", ce);
@@ -379,7 +379,6 @@ public class LinkCommandTest {
     /**
      * Assert execution failure by default, a wrong execution command inputted.
      * @param index , the index of the task
-     * @param personIndices, persons' indices to be linked
      * @param expectedMessage , the expected message String
      */
     private void assertExecutionFailure(Index index, ArrayList<Index> personIndices, String expectedMessage) {

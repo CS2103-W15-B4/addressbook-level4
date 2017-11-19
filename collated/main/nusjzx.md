@@ -12,6 +12,125 @@
     }
 
 ```
+###### /java/seedu/address/model/task/Task.java
+``` java
+    private ObjectProperty<Integer> id;
+    private ObjectProperty<ArrayList<Integer>> peopleIds;
+```
+###### /java/seedu/address/model/task/Task.java
+``` java
+        this.id = new SimpleObjectProperty<>(this.hashCode());
+        this.peopleIds = new SimpleObjectProperty<>(new ArrayList<Integer>());
+```
+###### /java/seedu/address/model/task/Task.java
+``` java
+    @Override
+    public ObjectProperty<Integer> idProperty() {
+        return id;
+    }
+
+    @Override
+    public Integer getId() {
+        return id.get();
+    }
+    public Integer getPriority () {
+        return taskPriority.get();
+    }
+```
+###### /java/seedu/address/model/task/Task.java
+``` java
+    public ObjectProperty<ArrayList<Integer>> peopleIdsProperty() {
+        return peopleIds;
+    }
+
+    public ArrayList<Integer> getPeopleIds() {
+        return peopleIds.get();
+    }
+
+    public void setPeopleIds(ArrayList<Integer> peopleIds) {
+        this.peopleIds.set(requireNonNull(peopleIds));
+    }
+
+    public void setRemark(ArrayList<Integer> peopleIndices) {
+        this.peopleIds.set(requireNonNull(peopleIndices));
+    }
+
+```
+###### /java/seedu/address/model/task/ReadOnlyTask.java
+``` java
+    ObjectProperty<Integer> idProperty();
+    Integer getId();
+    ObjectProperty<ArrayList<Integer>> peopleIdsProperty();
+    ArrayList<Integer> getPeopleIds();
+```
+###### /java/seedu/address/model/Model.java
+``` java
+    SortedList<ReadOnlyTask> getSortedTaskList();
+```
+###### /java/seedu/address/model/person/ReadOnlyPerson.java
+``` java
+    ObjectProperty<Integer> idProperty();
+    Integer getId();
+```
+###### /java/seedu/address/model/person/Person.java
+``` java
+    private ObjectProperty<Integer> id;
+```
+###### /java/seedu/address/model/person/Person.java
+``` java
+    @Override
+    public ObjectProperty<Integer> idProperty() {
+        return id;
+    }
+
+    @Override
+    public Integer getId() {
+        return id.get();
+    }
+```
+###### /java/seedu/address/model/person/Person.java
+``` java
+
+    /**
+     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    @Override
+    public Set<Tag> getTags() {
+        return Collections.unmodifiableSet(tags.get().toSet());
+    }
+
+    public ObjectProperty<UniqueTagList> tagProperty() {
+        return tags;
+    }
+
+    /**
+     * Replaces this person's tags with the tags in the argument tag set.
+     */
+    public void setTags(Set<Tag> replacement) {
+        tags.set(new UniqueTagList(replacement));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ReadOnlyPerson // instanceof handles nulls
+                && this.isSameStateAs((ReadOnlyPerson) other));
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(name, phone, email, address, tags);
+    }
+
+    @Override
+    public String toString() {
+        return getAsText();
+    }
+
+}
+```
 ###### /java/seedu/address/logic/parser/LinkedTasksCommandParser.java
 ``` java
 package seedu.address.logic.parser;
@@ -43,6 +162,32 @@ public class LinkedTasksCommandParser implements Parser<LinkedTasksCommand> {
         }
     }
 }
+```
+###### /java/seedu/address/logic/parser/AddressBookParser.java
+``` java
+        case LinkCommand.COMMAND_WORD:
+        case LinkCommand.COMMAND_ALIAS:
+            return new LinkCommandParser().parse(arguments);
+
+        case LinkedTasksCommand.COMMAND_WORD:
+        case LinkedTasksCommand.COMMAND_ALIAS:
+            return new LinkedTasksCommandParser().parse(arguments);
+
+        case LinkedPersonsCommand.COMMAND_WORD:
+        case LinkedPersonsCommand.COMMAND_ALIAS:
+            return new LinkedPersonsCommandParser().parse(arguments);
+
+```
+###### /java/seedu/address/logic/parser/AddressBookParser.java
+``` java
+        case TaskByEndCommand.COMMAND_WORD:
+        case TaskByEndCommand.COMMAND_ALIAS:
+            return new TaskByEndCommand();
+
+        case TaskByPriorityCommand.COMMAND_WORD:
+        case TaskByPriorityCommand.COMMAND_ALIAS:
+            return new TaskByPriorityCommand();
+
 ```
 ###### /java/seedu/address/logic/parser/LinkCommandParser.java
 ``` java
@@ -363,6 +508,24 @@ public class LinkCommand extends UndoableCommand {
         return list.get(index.getZeroBased());
     }
 }
+```
+###### /java/seedu/address/logic/Logic.java
+``` java
+    /** Returns a view of the sorted list of tasks */
+    SortedList<ReadOnlyTask> getSortedTaskList();
+```
+###### /java/seedu/address/logic/LogicManager.java
+``` java
+    @Override
+    public SortedList<ReadOnlyTask> getSortedTaskList() {
+        return model.getSortedTaskList();
+    }
+
+```
+###### /java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+    @XmlElement(required = true)
+    private Integer id;
 ```
 ###### /java/seedu/address/ui/BrowserPanel.java
 ``` java

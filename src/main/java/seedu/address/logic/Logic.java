@@ -26,10 +26,10 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of tasks */
     ObservableList<ReadOnlyTask> getFilteredTaskList();
-
+    //@@author nusjzx
     /** Returns a view of the sorted list of tasks */
     SortedList<ReadOnlyTask> getSortedTaskList();
-
+    //@@author
     /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
     ListElementPointer getHistorySnapshot();
 }

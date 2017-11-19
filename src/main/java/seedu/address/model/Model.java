@@ -62,7 +62,10 @@ public interface Model {
     ObservableList<ReadOnlyPerson> getFilteredPersonList();
     ObservableList<ReadOnlyTask> getFilteredTaskList();
 
+    //@@author nusjzx
     SortedList<ReadOnlyTask> getSortedTaskList();
+    //@@author
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

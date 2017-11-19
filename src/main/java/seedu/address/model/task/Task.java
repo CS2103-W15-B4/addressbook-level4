@@ -26,9 +26,10 @@ public class Task implements ReadOnlyTask {
     private ObjectProperty<Integer> taskPriority;
     private ObjectProperty<UniqueTagList> tags;
     private ObjectProperty<Boolean> complete;
+    //@@author nusjzx
     private ObjectProperty<Integer> id;
     private ObjectProperty<ArrayList<Integer>> peopleIds;
-
+    //@@author
     /**
      * Default constructor may not be used
      */
@@ -36,8 +37,10 @@ public class Task implements ReadOnlyTask {
         this.tags = new SimpleObjectProperty<>(new UniqueTagList());
         this.complete = new SimpleObjectProperty<>(false);
         this.taskPriority = new SimpleObjectProperty<>(3);
+        //@@author nusjzx
         this.id = new SimpleObjectProperty<>(this.hashCode());
         this.peopleIds = new SimpleObjectProperty<>(new ArrayList<Integer>());
+        //@@author
     }
 
     /**
@@ -186,6 +189,7 @@ public class Task implements ReadOnlyTask {
         return complete.get();
     }
 
+    //@@author nusjzx
     @Override
     public ObjectProperty<Integer> idProperty() {
         return id;
@@ -198,6 +202,7 @@ public class Task implements ReadOnlyTask {
     public Integer getPriority () {
         return taskPriority.get();
     }
+    //@@author
 
     public ObjectProperty<Name> nameProperty() {
         return taskName;
@@ -264,6 +269,7 @@ public class Task implements ReadOnlyTask {
         this.complete.set(requireNonNull(true));
     }
 
+    //@@author nusjzx
     public ObjectProperty<ArrayList<Integer>> peopleIdsProperty() {
         return peopleIds;
     }
@@ -279,6 +285,8 @@ public class Task implements ReadOnlyTask {
     public void setRemark(ArrayList<Integer> peopleIndices) {
         this.peopleIds.set(requireNonNull(peopleIndices));
     }
+
+    //@@author
     /**
      * Set a new tag set along with the new task construction
      * This method should not be usd if the

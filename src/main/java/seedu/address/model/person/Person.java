@@ -23,8 +23,9 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Email> email;
     private ObjectProperty<Address> address;
     private ObjectProperty<Remark> remark;
+    //@@author nusjzx
     private ObjectProperty<Integer> id;
-
+    //@@author
     private ObjectProperty<UniqueTagList> tags;
 
     /**
@@ -133,6 +134,7 @@ public class Person implements ReadOnlyPerson {
         return remark.get();
     }
 
+    //@@author nusjzx
     @Override
     public ObjectProperty<Integer> idProperty() {
         return id;
@@ -142,6 +144,7 @@ public class Person implements ReadOnlyPerson {
     public Integer getId() {
         return id.get();
     }
+    //@@author nusjzx
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

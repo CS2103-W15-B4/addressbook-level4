@@ -32,8 +32,10 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String remark;
+    //@@author nusjzx
     @XmlElement(required = true)
     private Integer id;
+    //@@author
 
     @XmlElement
     private List<XmlAdaptedTag> tagged;

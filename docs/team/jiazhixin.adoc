@@ -8,6 +8,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Users can enjoy a well-organized life with our 3W.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/main/nusjzx.md[functional code]][https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/test/nusjzx.md[test code]]
+*Code reused*: [https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/main/nusjzx-reused.md[functional code]][https://github.com/CS2103AUG2017-W15-B4/main/blob/master/collated/test/nusjzx-reused.md[test code]]
 
 === Enhancement Added: Add Remark Command
 
