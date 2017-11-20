@@ -23,6 +23,28 @@ include::../UserGuide.adoc[tag=remark]
 
 ---
 
+=== Enhancement Added: Add TaskByEnd Command
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=taskByEnd]
+
+#End of Extract#
+
+---
+
+==== Implementation
+---
+Difficulties: FilteredList used in Model is unmodifiable list. Therefore, we cannot apply `Collections.sort` to it.
+
+Solution: Wrap the filteredlist with a sortedlist, and use sortedlist method to sort the list. Both taskByEnd and taskByPriority
+using this implementation.
+
+---
+
 === Enhancement Added: Add Google Map in the browser panel, including the Route planning
 
 ==== External behavior
@@ -61,6 +83,42 @@ include::../UserGuide.adoc[tag=link]
 ==== Implementation
 
 ---
+Difficulties: The relationship between person and tasks in our implementation is a many-to-many relationship. +
+
+First Attempt: +
+This can be done by association class. However after I tried this approach, I found out that when storing the data,
+the association class will store data of each associating persons and tasks, which is a waste of resources because the
+data of persons and tasks can be duplicate many times if we have a lot of links, which is quite possible when user has
+a lot of tasks to manage. Thus, I start over again.
+
+Second Attemt: +
+I found out that JAXB can store reference only instead of the object. However, all the existing examples are for one-to-many
+relationship because many-to-many relationship is always stored in database. However, I still wanted to try, but unfortunately,
+the inverse reference cannot dereferenced back after unmarshall. Thus, I need another approach.
+
+Third Attempt: +
+I'm only left with one solution, give each item an id, and store the list of ids of one entity in the other one. I put this
+solution at last is because searching operations is quite time-consuming. Take our App as example, we store the ids of persons
+in each task. Then, when we want to list tasks related to one person, we have to go through the whole tasks list and check
+every task whether their ids list have the person's id. This searching in worst case can be O(mn) running time (m is the size of person,
+n is the size of task). Which will be average case, when every task links to many persons. However, as this is the only working solution,
+we adapt this implementation.
+
+Difficulties: How do we make a unique ID for each item.
+
+First Attempt: Hash code will be a good choice because it will be unique based on Java inner implementation. However, when updating a person,
+our app will create a new person(for the sake of data protection), which will be a different object with a different hash code, but they are
+the same item. Thus we cannot use hashcode as their id. This solution is discarded.
+
+Second Attempt: I try to simulate auto-increment id in datatbase management system. We store a nextId in the class. However, the storage of this
+variable became the problem. This variable should be a static variable, but it must be in both the Person and XMLAdaptedPerson
+class. When unmarshalling the addressbook before static variable is unmarshalled, unmarshalling the person already needs the nextId, which means this
+solution also cannot work.
+
+Final implmentation: I get back to hashcode and want to ditinguish between a new item or updating an item. Thus, I separate the constructor for new and copy,
+so now I can keep the previous id when copying, and generate hashcode when it's newly created item.
+The process of restarting over and over again really took me a lot of time. However, the final implementation really works fine, which makes my effort worth.
+
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=link]
